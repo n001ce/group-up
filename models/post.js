@@ -2,18 +2,16 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema;
 
 export {
-	LFG
+	Post
 }
 
-const lfgSchema = new Schema({
+const postSchema = new Schema({
   profile: {type: mongoose.Schema.Types.ObjectId, ref: "Profile"},
   content: String,
   video: String,
-  replies: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
-  // To be filled in later
-  // reviews: [reference GameReview],
+  comments: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
 },{
   timestamps: true,
 });
 
-const LFG = mongoose.model("LFG", gameSchema);
+const Post = mongoose.model("Post", postSchema);

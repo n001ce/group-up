@@ -5,11 +5,11 @@ export {
   show,
   edit,
   update,
-  addFriend,
-  removeFriend
+  follow,
+  unfollow
 }
 
-function addFriend(req, res) {
+function follow(req, res) {
   Profile.findById(req.user.profile)
   .then(profile => {
     profile.friends.push(req.params.id)
@@ -24,7 +24,7 @@ function addFriend(req, res) {
   })
 }
 
-function removeFriend(req, res) {
+function unfollow(req, res) {
   Profile.findById(req.user.profile)
   .then(profile => {
     profile.friends.remove({_id: req.params.id})

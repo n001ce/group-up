@@ -8,8 +8,16 @@ export {
 const profileSchema = mongoose.Schema({
   name: String,
   avatar: String,
-  friends: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
-}, {
+  followers: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
+  srank: Number,
+  srankImg: String,
+  drank: Number,
+  drankImg: String,
+  trank: Number,
+  trankImg: String,
+  level: Number,
+  mostPlayedHero: String,
+ }, {
   timestamps: true
 })
 
