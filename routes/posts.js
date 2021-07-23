@@ -3,14 +3,18 @@ const router = Router()
 import * as postsCtrl from '../controllers/posts.js'
 
 /* GET users listing. */
-router.get('/', postsCtrl.index)
-router.get('/:id', postsCtrl.show)
-router.post('/', postsCtrl.create)
-router.get('/new', postsCtrl.new)
-router.put('/:id/show', postsCtrl.update)
-router.delete('/:id/show', postsCtrl.delete)
+router.get('/', isLoggedIn, postsCtrl.index)
+router.get('/:id', isLoggedIn, postsCtrl.show)
+router.post('/', isLoggedIn, postsCtrl.create)
+router.get('/new', isLoggedIn, postsCtrl.new)
+router.put('/:id/show', isLoggedIn, postsCtrl.update)
+router.delete('/:id/show', isLoggedIn, postsCtrl.delete)
 router.post('/search', isLoggedIn, postsCtrl.search)
 
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  res.redirect("/auth/google");
+}
 
 export {
   router

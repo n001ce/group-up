@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { Post } from '../models/post.js'
 
 
@@ -8,10 +7,20 @@ export {
   newPost as new,
   deletePost as delete,
   update,
-
+  search,
+  show
 }
 
 function index(req, res){
+  Post.find({})
+  .populate('author')
+  .sort({createdAt: "desc"})
+  .then(post=>{
+    res.render('posts/index',{
+      title: "LFG",
+      post
+    })
+  })
 
 }
 
@@ -34,3 +43,7 @@ function deletePost(req, res){
 function search(req, res){
   
 }
+
+function show(req,res){
+
+  }

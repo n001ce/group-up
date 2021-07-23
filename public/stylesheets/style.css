@@ -79,6 +79,39 @@ footer{
 .icon{
   max-width: 200px;
 }
+#lfg{
+  background: url('/images/pages/volskaya-industries-4.jpg') no-repeat center center fixed;
+  display: table;
+  height: 100%;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+}
+#profile{
+  background: url('/images/pages/anna.jpg') no-repeat center center fixed;
+  display: table;
+  height: 100%;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+}
+#friendsList{
+  background-color: yellow;
+  height: 50vh;
+  padding-right: 40px;
+}
+#sidePanel{
+  background-color: red;
+  height: 100vh;
+}
+
+#threadList{
+  background-color: rgba(255, 255, 255, 0.87);
+  border-left:solid 2px rgba(27, 27, 27, 0.63);
+  border-right:solid 2px rgba(27, 27, 27, 0.63);
+  box-shadow: 3px 0px -3px 0px grey;
+  height: 100vh;
+}
 
 @media (max-width: 768px){
   .landing-text h1{
@@ -92,4 +125,19 @@ footer{
       padding-top: 5%;
       max-width: 100px;
   }
+}
+
+.tableHead{
+  color: white;
+  background-color: rgba(34, 119, 231, 0.568);
+}
+
+.tableSec{
+  color: black;
+  background-color: rgba(202, 196, 196, 0.589);
+}
+
+table{
+  width: 100%;
+
 }

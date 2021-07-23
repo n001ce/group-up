@@ -1,0 +1,28 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+<div id="lfg">
+    <div class="padding">
+        <table class="table table-hover">
+            <thead>
+                <tr class="tableHead">
+                    <th scope="col">TITLE</th>
+                    <th scope="col">LEADER</th>
+                    <th scope="col">QUEUE</th>
+                    <th scope="col">ENFORCED ROLES</th>
+                    <th scope="col">HERO SLOTS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tableSec">
+                    <td><%= post.title %> </td>
+                    <td><%= post.leader %> </td>
+                    <td><% post.queue %> </td>
+                    <td><%= post.eroles %> </td>
+                    <td><%= post.heroSlots %> </td>
+                    <td>Devon</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<%- include('../partials/footer') %>

@@ -21,4 +21,4 @@ const profileSchema = mongoose.Schema({
   timestamps: true
 })
 
-const Profile = mongoose.model('Profile', profileSchema)
+const Profile = mongoose.model("Profile", profileSchema)
