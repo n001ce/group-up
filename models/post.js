@@ -5,7 +5,7 @@ export {
 	Post
 }
 
-const preplySchema = new Schema({
+const replySchema = new Schema({
   author: [{type: Schema.Types.ObjectId, ref: "Profile"}],
   content: String
 },{
@@ -13,9 +13,37 @@ const preplySchema = new Schema({
 })
 
 const postSchema = new Schema({
-  profile: {type: mongoose.Schema.Types.ObjectId, ref: "Profile"},
-  content: String,
-  video: String,
+  title: String,
+  leader: [{type: mongoose.Schema.Types.ObjectId, ref: "Profile"}],
+  queue: String,
+  eroles: {
+    type: Boolean,
+    default: true
+  },
+  support1:{
+    type:Boolean,
+    default: true
+    },
+  support2:{
+    type: Boolean,
+    default: true
+    },
+  dps1:{
+    type: Boolean,
+    default: true
+    },
+  dps2:{
+    type: Boolean,
+    default: true
+    },
+  tank1:{
+    type: Boolean,
+    default: true
+    },
+  tank2:{
+    type: Boolean,
+    default: true
+  },
   comments: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
 },{
   timestamps: true,

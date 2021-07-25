@@ -141,3 +141,11 @@ table{
   width: 100%;
 
 }
+
+#lfgForm{
+  background-color: rgba(193, 199, 201, 0.753);
+  padding: 10px 10px;
+  max-width: 60vw;
+  border-radius: 30px;
+  box-shadow:rgba(43, 42, 42, 0.39) 10px 10px 10px 10px,rgba(24, 23, 23, 0.397) -10px -10px 10px 10px;
+}

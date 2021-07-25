@@ -4,9 +4,9 @@ import * as postsCtrl from '../controllers/posts.js'
 
 /* GET users listing. */
 router.get('/', isLoggedIn, postsCtrl.index)
+router.get('/new', isLoggedIn, postsCtrl.new)
 router.get('/:id', isLoggedIn, postsCtrl.show)
 router.post('/', isLoggedIn, postsCtrl.create)
-router.get('/new', isLoggedIn, postsCtrl.new)
 router.put('/:id/show', isLoggedIn, postsCtrl.update)
 router.delete('/:id/show', isLoggedIn, postsCtrl.delete)
 router.post('/search', isLoggedIn, postsCtrl.search)
