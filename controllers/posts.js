@@ -31,7 +31,7 @@ function newPost(req, res){
 }
 
 function create(req, res){
-
+  req.body.leader = req.user.profile._id
   req.body.eroles= !!req.body.eroles
   req.body.support1 = !!req.body.support1
   req.body.support2= !!req.body.support2
@@ -40,13 +40,9 @@ function create(req, res){
   req.body.tank1= !!req.body.tank1
   req.body.tank2= !!req.body.tank2
 
-  for (let key in req.body) {
-    if (req.body[key] === '') delete req.body[key]
-  }
-  const post = new Post(req.body)
-  post.save(function(err) {
-    if (err) return res.redirect('/posts/new')
-    res.redirect(`/posts`)
+  Post.create(req.body)
+  .then(()=>{
+    res.redirect('/posts')
   })
 }
 

@@ -14,7 +14,7 @@ const replySchema = new Schema({
 
 const postSchema = new Schema({
   title: String,
-  leader: [{type: mongoose.Schema.Types.ObjectId, ref: "Profile"}],
+  leader: {type: Schema.Types.ObjectId, ref: 'Profile'},
   queue: String,
   eroles: {
     type: Boolean,
