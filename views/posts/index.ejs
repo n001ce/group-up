@@ -22,8 +22,8 @@
             <tbody>
                 <% posts.forEach((post,idx)=>{ %> 
                 <tr class="tableSec">
-                    <td><%= post.title %> <a href="/posts/<%=post._id %>" class="text-decoration-none text-light"></a></td>
-                    <td><%= post.leader.name%> </td>
+                    <td><a href="/posts/<%=post._id %>" class="text-decoration-none text-light"><%= post.title %> </a></td>
+                    <td><a href="/posts/<%= post.leader.name%>"><%= post.leader.name %> </a> </td>
                     <td><% post.queue.value %> </td>
                     <td><%= post.eroles %> </td>
                     <td><%= post.support1 %> </td>
