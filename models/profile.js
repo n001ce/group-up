@@ -7,6 +7,7 @@ export {
 
 const profileSchema = mongoose.Schema({
   name: String,
+  gamerTag: String,
   avatar: String,
   followers: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
   srank: Number,

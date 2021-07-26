@@ -1,71 +1,42 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
-<div id="home">
-    <main class="container">
-        <h1 class="my-3"><%= title %></h1>
-        <section class="">
-          <div class="col-md-8 text-light px-0">
-            <h3 class="fs-1 fst-italic"><%= post.title %></h3>
-            <h4 class="mb-0 fs-5 fst-italic">
-              written by 
-              <a 
-                href="/profiles/<%= post.leader._id %>"
-                class="text-decoration-none text-light"
-              >
-                <%= post.leader.name %>
-                <img
-                  src="<%= post.leader.avatar %>"
-                  class="img-fluid rounded-circle"
-                  alt="<%= post.leader.name %>'s avatar"
-                  height="35"
-                  width="35"
-                />
-              </a>
-            </h4>
-            <p class="fs-7 fst-italic">
-              on <%= post.createdAt.toLocaleDateString() %>
-            </p>
-            <p class="lead my-3"><%= post.content %> </p>
-          </div>
-        </section>
-        <form action="/posts/<%= post._id %>" method="POST" class="mb-3">
-          <h2 class="mb-3">Write a Reply</h2>
-          <div class="mb-3 mx-5">
-            <label for="reply-content" class="form-label">Reply</label>
-            <textarea 
-              class="form-control" 
-              id="reply-content" 
-              rows="3" 
-              name="content"
-            ></textarea>
-          </div>
-          <button class="btn btn-primary ms-5" type="submit">Reply</button>
-        </form>
-        <% if (post.replies.length) { %>
-          <h2 class="mb-3">All Replies</h2>
-        <% } %>
-        <% post.replies.reverse().forEach(reply => { %>
-            <section class="p-2 p-md-3 mb-3 rounded mx-4 border shadow-sm">
-              <div class="col-md-10 px-0">
-                <h4 class="mb-0 fs-5 fst-italic"> 
-                  <a 
-                    href="/profiles/<%= reply.author._id %>"
-                    class="text-decoration-none text-dark"
-                  >
-                    <img
-                      src="<%= reply.author.avatar %>"
-                      class="img-fluid rounded-circle"
-                      alt="<%= reply.author.name %>'s avatar"
-                      height="35"
-                      width="35"
-                    />
-                    <%= reply.author.name %>
-                  </a>
-                  on <%= reply.createdAt.toLocaleDateString() %>
-                </h4>
-                <p class="lead my-3"><%= reply.content %> </p>
-              </div>
-            </section>
-          <% }) %>
-      </main>
+
+<div id="lfg">
+    <div class="padding">
+
+        <table class="table table-hover">
+            <thead>
+                <tr class="tableHead">
+                    <th scope="col">TITLE</th>
+                    <th scope="col">LEADER</th>
+                    <th scope="col">QUEUE</th>
+                    <th scope="col">ENFORCED ROLES</th>
+                    <th scope="col">SUPPORT</th>
+                    <th scope="col">SUPPORT</th>
+                    <th scope="col">DPS</th>
+                    <th scope="col">DPS</th>
+                    <th scope="col">TANK</th>
+                    <th scope="col">TANK</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% posts.forEach((post)=>{ %> 
+                <tr class="tableSec">
+                    <td><a href="/posts/<%=post._id %>" class="text-decoration-none text-light"><%= post.title %> </a></td>
+                    <td><a href="/posts/<%= post.leader.name%>"><%= post.leader.name %> </a> </td>
+                    <td><% post.queue.value %> </td>
+                    <td><%= post.eroles %> </td>
+                    <td><%= post.support1 %> </td>
+                    <td><%= post.support2 %> </td>
+                    <td><%= post.dps1 %> </td>
+                    <td><%= post.dps2 %> </td>
+                    <td><%= post.tank1 %> </td>
+                    <td><%= post.tank2 %> </td>
+                </tr>
+                <% })%> 
+            </tbody>
+        </table>
+        <a class="nav-item nav-link" href="/posts/new">New LFG</a>
+    </div>
+</div>
 <%- include('../partials/footer') %>

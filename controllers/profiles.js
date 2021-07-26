@@ -1,5 +1,7 @@
 import { Profile } from "../models/profile.js"
 import { Post } from "../models/post.js"
+import axios from 'axios'
+
 
 export {
   index,
@@ -69,12 +71,10 @@ function show(req, res) {
   Profile.findById(req.params.id)
   .populate('followers')
   .then(profile => {
-    Profile.findById(req.user.profile)
-    .then(userProfile => {
-      res.render('profiles/show', {
-        // Profile of the user clicked
+      Profile.findById(req.user.profile)
+      .then(userProfile => {
+        res.render('profile/show', {
         profile,
-        // Profile of the logged in user
         userProfile,
         title: `${profile.name}'s profile`
       })

@@ -1,18 +1,22 @@
 import mongoose from 'mongoose'
+const Schema = mongoose.Schema
+
 
 export {
   User
 }
 
-const userSchema = new mongoose.Schema(
+const userSchema = new Schema(
   {
     email: String,
     googleId: String,
-    profile: {type: mongoose.Schema.Types.ObjectId, ref: "Profile"}
+    profile: {type: Schema.Types.ObjectId, ref: "Profile"},
   },
   {
     timestamps: true,
   }
 )
+
+
 
 const User = mongoose.model("User", userSchema)

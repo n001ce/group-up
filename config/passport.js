@@ -3,6 +3,8 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
 import { User } from '../models/user.js'
 import { Profile } from '../models/profile.js'
 
+
+
 passport.use(
   new GoogleStrategy(
     {
@@ -54,3 +56,4 @@ passport.deserializeUser(function (id, done) {
     done(err, user)
   })
 })
+

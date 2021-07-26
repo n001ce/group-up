@@ -8,6 +8,7 @@ import logger from 'morgan'
 import methodOverride from 'method-override'
 import passport from 'passport'
 import cors from 'cors'
+import { passUserToView } from './middleware/middleware.js'
 
 // create the express app
 const app = express()
@@ -23,6 +24,7 @@ import { router as indexRouter } from './routes/index.js'
 import { router as authRouter } from './routes/auth.js'
 import { router as postRouter } from './routes/posts.js'
 import { router as profileRouter } from './routes/profiles.js'
+import { router as statRouter } from './routes/stats.js'
 // view engine setup
 app.set(
   'views',
@@ -53,16 +55,22 @@ app.use(
     }
   })
 )
+app.use(session({ secret: 'process.env.BNET_SECRET',
+                  saveUninitialized: true,
+                  resave: true }));
 
 // passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
+
+app.use(passUserToView)
 
 // router middleware
 app.use('/', indexRouter)
 app.use('/auth', authRouter)
 app.use('/posts', postRouter)
 app.use('/profile', profileRouter)
+app.use('/stats', statRouter)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404))

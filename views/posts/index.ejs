@@ -20,7 +20,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% posts.forEach((post,idx)=>{ %> 
+                <% posts.forEach((post)=>{ %> 
                 <tr class="tableSec">
                     <td><a href="/posts/<%=post._id %>" class="text-decoration-none text-light"><%= post.title %> </a></td>
                     <td><a href="/posts/<%= post.leader.name%>"><%= post.leader.name %> </a> </td>
