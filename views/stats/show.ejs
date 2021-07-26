@@ -24,8 +24,29 @@
             >
               Player Stats
             </button>
-      <p class="mt-4 fs-4 text-light">Time Played: <%= apiResult.segments.attributes.realm%></p>
-      
+            <h1>Quickplay (Life Time)</h1>
+      <p class="mt-4 fs-4 text-light">Time Played: <%= apiResult.data.segments[0].stats.timePlayed.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">Wins: <%= apiResult.data.segments[0].stats.wins.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">Time Spent on Fire: <%= apiResult.data.segments[0].stats.timeSpentOnFire.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">Gold Medals: <%= apiResult.data.segments[0].stats.goldMedals.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">Silver Medals: <%= apiResult.data.segments[0].stats.silverMedals.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">Bronze Medals: <%= apiResult.data.segments[0].stats.bronzeMedals.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">K/D: <%= apiResult.data.segments[0].stats.kd.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">Most Damage Done: <%= apiResult.data.segments[0].stats.mostDamageDone.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">Most Healing Done: <%= apiResult.data.segments[0].stats.mostHealingDone.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">Most Solo Kills: <%= apiResult.data.segments[0].stats.mostSoloKills.displayValue%></p>
+            <h1>Competitive (last played season)</h1>
+      <p class="mt-4 fs-4 text-light">Time Played: <%= apiResult.data.segments[1].stats.timePlayed.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">Wins: <%= apiResult.data.segments[1].stats.wins.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">Time Spent on Fire: <%= apiResult.data.segments[1].stats.timeSpentOnFire.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">Gold Medals: <%= apiResult.data.segments[1].stats.goldMedals.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">Silver Medals: <%= apiResult.data.segments[1].stats.silverMedals.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">Bronze Medals: <%= apiResult.data.segments[1].stats.bronzeMedals.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">K/D: <%= apiResult.data.segments[1].stats.kd.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">Most Damage Done: <%= apiResult.data.segments[1].stats.mostDamageDone.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">Most Healing Done: <%= apiResult.data.segments[1].stats.mostHealingDone.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">Most Solo Kills: <%= apiResult.data.segments[1].stats.mostSoloKills.displayValue%></p>
+
     </div>
   </section>
 </main>
