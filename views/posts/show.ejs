@@ -44,29 +44,28 @@
         <% if (post.replies.length) { %>
           <h2 class="mb-3">All Replies</h2>
         <% } %>
-        <%# This is where we'll loop over and display replies %> 
         <% post.replies.reverse().forEach(reply => { %>
-          <section class="p-2 p-md-3 mb-3 rounded mx-4 border shadow-sm">
-            <div class="col-md-10 px-0">
-              <h4 class="mb-0 fs-5 fst-italic"> 
-                <a 
-                  href="/profiles/<%= reply.author._id %>"
-                  class="text-decoration-none text-dark"
-                >
-                  <img
-                    src="<%= reply.author.avatar %>"
-                    class="img-fluid rounded-circle"
-                    alt="<%= reply.author.name %>'s avatar"
-                    height="35"
-                    width="35"
-                  />
-                  <%= reply.author.name %>
-                </a>
-                on <%= reply.createdAt.toLocaleDateString() %>
-              </h4>
-              <p class="lead my-3"><%= reply.content %> </p>
-            </div>
-          </section>
-        <% }) %>
+            <section class="p-2 p-md-3 mb-3 rounded mx-4 border shadow-sm">
+              <div class="col-md-10 px-0">
+                <h4 class="mb-0 fs-5 fst-italic"> 
+                  <a 
+                    href="/profiles/<%= reply.author._id %>"
+                    class="text-decoration-none text-dark"
+                  >
+                    <img
+                      src="<%= reply.author.avatar %>"
+                      class="img-fluid rounded-circle"
+                      alt="<%= reply.author.name %>'s avatar"
+                      height="35"
+                      width="35"
+                    />
+                    <%= reply.author.name %>
+                  </a>
+                  on <%= reply.createdAt.toLocaleDateString() %>
+                </h4>
+                <p class="lead my-3"><%= reply.content %> </p>
+              </div>
+            </section>
+          <% }) %>
       </main>
 <%- include('../partials/footer') %>

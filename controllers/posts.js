@@ -10,7 +10,21 @@ export {
   search,
   show,
   addToWall,
-  removeFromWall
+  removeFromWall,
+  reply
+}
+
+function reply(req, res) {
+  // Add author of reply to req.body
+  req.body.author = req.user.profile._id
+  Post.findById(req.params.id)
+  .then(post => {
+    post.replies.push(req.body)
+    post.save()
+    .then(() => {
+      res.redirect(`/posts/${req.params.id}`)
+    })
+  })
 }
 
 function index(req, res){
