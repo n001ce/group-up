@@ -9,7 +9,6 @@ const router = Router()
 
 
 router.post('/search', isLoggedIn, statsCtrl.search)
-router.get('/:id', isLoggedIn, statsCtrl.show)
 router.post('/:id/addToProfile', isLoggedIn, statsCtrl.addToProfile)
 router.delete('/:id/removeFromCollection', isLoggedIn, statsCtrl.removeFromProfile)
 

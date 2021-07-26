@@ -3,7 +3,6 @@ import axios from 'axios'
 
 export {
   search,
-  show,
   addToProfile,
   removeFromProfile
 }
@@ -54,8 +53,8 @@ function addToProfile(req, res) {
   
 
 
-function show(req, res) {
-  axios.get(`https://public-api.tracker.gg/v2/overwatch/standard/profile/${stat.platform}/${stat.gamerTag}`,{
+function search(req, res) {
+  axios.get(`https://public-api.tracker.gg/v2/overwatch/standard/profile/xbl/N001CE`,{
   headers: {
     "TRN-Api-Key": process.env.TRN_API_KEY
   }})
@@ -75,20 +74,3 @@ function show(req, res) {
   })
 }
 
-function search(req, res) {
-  axios.get(`https://public-api.tracker.gg/v2/overwatch/standard/profile/${req.params.platform}/${req.params.gamerTag}`,{
-    headers: {
-        "TRN-Api-Key": process.env.TRN_API_KEY
-      }
-  .then(response => {
-    res.render('stats/new', {
-      title: 'Search Results',
-      results: response.data.results
-    })
-  })
-})
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
-  })
-}
