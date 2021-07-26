@@ -1,3 +1,12 @@
+
+
+@font-face {
+    font-family: 'owfont';
+    src: url('/images/pages/big_noodle_titling_oblique.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html, body{
   height: 100%;
   width: 100%;
@@ -143,10 +152,11 @@ table{
 }
 
 #lfgForm{
+  font-family: owfont;
   text-align: center;
-  background-color: rgba(16, 1, 85, 0.63);
-  padding: 10px 10px;
-  border-radius: 30px;
+  background-color: rgb(16, 1, 85);
+  padding: 40px 40px;
+  border-radius: 10px;
   box-shadow:rgba(43, 42, 42, 0.39) 10px 10px 10px 10px,rgba(24, 23, 23, 0.397) -10px -10px 10px 10px;
   color: white;
 }
@@ -155,7 +165,8 @@ table{
   flex-wrap: wrap;
 }
 .box{
-  background-color: rgba(16, 1, 85, 0.295);
+  font-family:owfont;
+  background-color: rgba(48, 7, 230, 0.123);
   padding: 20px;
   text-align: center;
   width: 100%;
@@ -166,4 +177,8 @@ table{
   margin-bottom: 10px;
 
 
+}
+
+#title-input{
+  min-width:  400px;
 }

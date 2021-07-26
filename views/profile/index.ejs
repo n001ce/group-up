@@ -4,7 +4,27 @@
   <div class="container">
       <div class="row">
           <div class="col-lg-3" id="sidePanel">
-
+            <main class="bg-light">
+              <div class="container">
+                <h1 class="py-4"><%= title %></h1>
+                <h2 class="mb-3">Posts</h2>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g5 px-4">
+                  <% posts.forEach((post,idx)=>{ %> 
+                    <div class="col">
+                    <a class="text-decoration-none" href="/posts/<%= post._id %>">
+                      <div class="card bg-dark shadow-sm mb-3">
+                        <div class="card-body">
+                          <p class="card-title fs-4 text-light">
+                            <% let lastCollectorIdx = post.collectedBy.length - 1  %> 
+                            <%= post.title %> - added by <%= post.collectedBy[lastCollectorIdx].name %> 
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <% }) %>
+                </div>
+            </div>
           </div>
           <div class="col-lg-6" id="threadList">
 

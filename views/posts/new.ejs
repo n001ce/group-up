@@ -1,28 +1,30 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<div id="lfg">
+<div id="home">
   <div class="padding">
-    <h2 class="text-align-center">LOOK FOR GROUP</h2>
     <div class="container" id="lfgForm">
+      <h1 class="text-align-center">LOOK FOR GROUP</h1>
       <form id="new-form" action="/posts" method="POST" >
         <div class="row">
           <div class="col-sm-12 form-group">
             <div class="box">
-            <label for="title-input">Title: </label>
+            <label for="title-input"><h3>Title: </h3></label><br>
             <input type="text" id="title-input" name="title">
             </div>
             <div class="box">
-            <label for="queue-input">QUEUE</label>
+            <label for="queue-input"><h3>QUEUE</h3></label>
             <select class="form-select align-items-center justify-content-between" id="exampleFormControlSelect2" name="queue">
               <option value="Competitive">Competitive</option>
               <option value="QuickPlay">Quick Play</option>
             </select></div>
             <div class="box">
-            <label for="eroles-input">Enforced Roles</label><br>
+            <label for="eroles-input"><h3>Enforced Roles</h3></label><br>
             <input type="checkbox" name="eroles" checked id ="eroles-checkbox" value="eroles">Yes/No<br>
             </div>
-            <h1>Hero Slots</h1><br>
+            <div class="box">
+            <h2>Hero Slots</h2><br>
+          </div>
             <div class="box" id="heroSlots">
               <label for="support1-input">
                 <img src="/images/pages/New_Support_Icon.png" width="50" alt="">

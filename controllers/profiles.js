@@ -1,4 +1,5 @@
 import { Profile } from "../models/profile.js"
+import { Post } from "../models/post.js"
 
 export {
   index,
@@ -66,7 +67,7 @@ function edit(req, res) {
 
 function show(req, res) {
   Profile.findById(req.params.id)
-  .populate('friends')
+  .populate('followers')
   .then(profile => {
     Profile.findById(req.user.profile)
     .then(userProfile => {
@@ -89,7 +90,7 @@ function index(req, res) {
   Profile.find({})
   .then(profiles => {
     res.render('profile/index', {
-      title: "LFG Profiles",
+      title: "LFG Profile",
       profiles,
     })
   })

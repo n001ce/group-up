@@ -44,7 +44,7 @@ const postSchema = new Schema({
     type: Boolean,
     default: true
   },
-  comments: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
+  replies: [replySchema],
 },{
   timestamps: true,
 });
