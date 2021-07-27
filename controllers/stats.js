@@ -54,10 +54,7 @@ function addToProfile(req, res) {
 
 
 function search(req, res) {
-  axios.get(`https://public-api.tracker.gg/v2/overwatch/standard/profile/xbl/N001CE`,{
-  headers: {
-    "TRN-Api-Key": process.env.TRN_API_KEY
-  }})
+  axios.get(`https://ow-api.com/v1/stats/${req.body.platform}/us/${req.body.gamerTag}/profile`)
   .then((response) => {
     Stat.findOne({ statId: response.data.id })
     .then((stat)=> {

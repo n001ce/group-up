@@ -29,6 +29,11 @@
         </ul>
         <form action="/stats/search" method="POST" class="d-flex align-items-center me-3">
             <input name="gamerTag" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <select name="platform" id="">
+                <option value="xbl">XBL</option>
+                <option value="psn">PSN</option>
+                <option value="battlenet">PC</option>
+            </select>
           </form>
           <% if (user) { %>
             <div id="profile-dropdown" class="dropdown text-end">

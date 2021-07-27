@@ -5,11 +5,12 @@
 <main>
   <section class="bg-dark text-secondary px-4">
     <h1 class="display-5 fw-bold text-white pt-2 text-center">
-      <%= apiResult.data.platformInfo.platformUserId %>
+      <img src="<%=apiResult.icon%>" alt="">
+      <%= apiResult.name %>
     </h1>
     <div class="container py-4">
       <h4 class="display-5 fw-bold text-white pt-2 text-center">
-          <%= apiResult.data.metadata.lastUpdated.value %> 
+          <%= apiResult.level %> 
       </h4>
       <div class="accordion" id="accordion">
         <div class="accordion-item bg-dark">
@@ -24,29 +25,45 @@
             >
               Player Stats
             </button>
-            <h1>Quickplay (Life Time)</h1>
-      <p class="mt-4 fs-4 text-light">Time Played: <%= apiResult.data.segments[0].stats.timePlayed.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">Wins: <%= apiResult.data.segments[0].stats.wins.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">Time Spent on Fire: <%= apiResult.data.segments[0].stats.timeSpentOnFire.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">Gold Medals: <%= apiResult.data.segments[0].stats.goldMedals.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">Silver Medals: <%= apiResult.data.segments[0].stats.silverMedals.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">Bronze Medals: <%= apiResult.data.segments[0].stats.bronzeMedals.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">K/D: <%= apiResult.data.segments[0].stats.kd.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">Most Damage Done: <%= apiResult.data.segments[0].stats.mostDamageDone.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">Most Healing Done: <%= apiResult.data.segments[0].stats.mostHealingDone.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">Most Solo Kills: <%= apiResult.data.segments[0].stats.mostSoloKills.displayValue%></p>
-            <h1>Competitive (last played season)</h1>
-      <p class="mt-4 fs-4 text-light">Time Played: <%= apiResult.data.segments[1].stats.timePlayed.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">Wins: <%= apiResult.data.segments[1].stats.wins.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">Time Spent on Fire: <%= apiResult.data.segments[1].stats.timeSpentOnFire.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">Gold Medals: <%= apiResult.data.segments[1].stats.goldMedals.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">Silver Medals: <%= apiResult.data.segments[1].stats.silverMedals.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">Bronze Medals: <%= apiResult.data.segments[1].stats.bronzeMedals.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">K/D: <%= apiResult.data.segments[1].stats.kd.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">Most Damage Done: <%= apiResult.data.segments[1].stats.mostDamageDone.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">Most Healing Done: <%= apiResult.data.segments[1].stats.mostHealingDone.displayValue%></p>
-      <p class="mt-4 fs-4 text-light">Most Solo Kills: <%= apiResult.data.segments[1].stats.mostSoloKills.displayValue%></p>
+      <p class="mt-4 fs-4 text-light">rating:<img src="<%=apiResult.ratingIcon%>" alt="">
+        <%= apiResult.rating%></p>
+      <p class="mt-4 fs-4 text-light">level:<img src="<%=apiResult.levelIcon%>" alt="">
+        <%= apiResult.level%></p>
+      <p class="mt-4 fs-4 text-light">QuickPlay</p>
+      <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Cards</th>
+                <th scope="col">Medals</th>
+                <th scope="col">Bronze Medals</th>
+                <th scope="col">Final Blows Avg</th>
+                <th scope="col">Healing Avg</th>
+                <th scope="col">Objective Kills Avg</th>
+                <th scope="col">Objective Time Avg</th>
+                <th scope="col">Solo Kills Avg</th>
+                <th scope="col">Games Played</th>
+                <th scope="col">Games Won</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= apiResult.quickPlayStats.cards %> </td>
+                <td><%= apiResult.quickPlayStats.medals %> </td>
+                <td><%= apiResult.quickPlayStats.medalsBronze %> </td>
+                <td><%= apiResult.quickPlayStats.finalBlowsAvg %> </td>
+                <td><%= apiResult.quickPlayStats.healingDoneAvg %> </td>
+                <td><%= apiResult.quickPlayStats.objectiveKillsAvg %> </td>
+                <td><%= apiResult.quickPlayStats.objectiveTimeAvg %> </td>
+                <td><%= apiResult.quickPlayStats.soloKillsAvg %> </td>
+                <td><%= apiResult.quickPlayStats.games.played %> </td>
+                <td><%= apiResult.quickPlayStats.games.won%> </td>
+               
+            </tr>
+        </tbody>
+    </table>
+      <table>
 
+      </table>
     </div>
   </section>
 </main>

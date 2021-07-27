@@ -7,7 +7,7 @@ export {
 
 const profileSchema = mongoose.Schema({
   name: String,
-  gamerTag: String,
+  gamerTag: {type: String, default: "N001CE"},
   avatar: String,
   followers: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
   srank: Number,
@@ -18,6 +18,7 @@ const profileSchema = mongoose.Schema({
   trankImg: String,
   level: Number,
   mostPlayedHero: String,
+  platform:{type: String, default: "xbl"},
  }, {
   timestamps: true
 })
