@@ -14,7 +14,8 @@ const replySchema = new Schema({
 
 const postSchema = new Schema({
   title: String,
-  leader: {type: Schema.Types.ObjectId, ref: 'Profile'},
+  postId: String,
+  leader: {type: Schema.Types.ObjectId, ref: "Profile"},
   queue: String,
   eroles: {
     type: Boolean,
@@ -45,6 +46,7 @@ const postSchema = new Schema({
     default: true
   },
   replies: [replySchema],
+  collectedBy: [{type: Schema.Types.ObjectId, ref: "Profile"}]
 },{
   timestamps: true,
 });

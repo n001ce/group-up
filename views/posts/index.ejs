@@ -20,11 +20,11 @@
                 </tr>
             </thead>
             <tbody>
-                <% posts.forEach((post)=>{ %> 
+                <% posts.forEach((post,indx)=>{ %> 
                 <tr class="tableSec">
                     <td><a href="/posts/<%=post._id %>" class="text-decoration-none text-light"><%= post.title %> </a></td>
-                    <td><a href="/posts/<%= post.leader.name%>"><%= post.leader.name %> </a> </td>
-                    <td><% post.queue.value %> </td>
+                    <td><a href="/profile/<% post.leader._id%>"><%= post.leader.gamerTag%> </a> </td>
+                    <td><% post.queue%> </td>
                     <td><%= post.eroles %> </td>
                     <td><%= post.support1 %> </td>
                     <td><%= post.support2 %> </td>

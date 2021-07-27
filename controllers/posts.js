@@ -47,6 +47,7 @@ function newPost(req, res){
 }
 
 function create(req, res){
+  req.body.postId = req.params.id
   req.body.leader = req.user.profile._id
   req.body.eroles= !!req.body.eroles
   req.body.support1 = !!req.body.support1
@@ -100,12 +101,12 @@ function addToWall(req, res) {
   // Add id of the logged in user to req.body for creating a game for the first time (if it doesn't exist in the database)
   req.body.collectedBy = req.user.profile._id
   // Look to see if the game already exists in the database
-  Post.findOne({ userId: req.params.id })
+  Post.findById(req.params.id)
   .then(post => {
     // If it does, push the user's profile id to game.collectedBy
     if (post) {
       post.collectedBy.push(req.user.profile._id)
-      Post.save()
+      post.save()
       .then(() => {
         res.redirect(`/posts/${req.params.id}`)
       })

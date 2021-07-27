@@ -68,16 +68,26 @@ function edit(req, res) {
 
 function show(req, res) {
   Profile.findById(req.params.id)
+  // Populate friends to get profile data for each of them
   .populate('followers')
   .then(profile => {
+    // Use the profile clicked to find games belonging to that user
+    Post.find({ collectedBy: profile._id })
+    .then(posts => {
+      // Find the profile of the current logged in user
       Profile.findById(req.user.profile)
       .then(userProfile => {
         res.render('profile/show', {
-        profile,
-        userProfile,
-        title: `${profile.name}'s profile`
+          // Profile of the user clicked
+          profile,
+          // Profile of the logged in user
+          userProfile,
+          title: `${profile.name}'s profile`,
+          posts
+        })
       })
     })
+
   })
   .catch(err => {
     console.log(err)

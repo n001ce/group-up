@@ -7,11 +7,11 @@ export {
 
 const profileSchema = mongoose.Schema({
   name: String,
-  gamerTag: {type: String, default: "N001CE"},
+  gamerTag: {type: String},
   avatar: String,
   followers: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
   platform:{type: String, default: "xbl"},
-  region: String
+  region: String,
  }, {
   timestamps: true
 })
