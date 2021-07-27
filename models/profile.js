@@ -19,6 +19,7 @@ const profileSchema = mongoose.Schema({
   level: Number,
   mostPlayedHero: String,
   platform:{type: String, default: "xbl"},
+  region: String
  }, {
   timestamps: true
 })

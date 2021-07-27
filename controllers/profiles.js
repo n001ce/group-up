@@ -30,7 +30,6 @@ function follow(req, res) {
 function unfollow(req, res) {
   Profile.findById(req.user.profile)
   .then(profile => {
-    profile.followers.remove({_id: req.params.id})
     profile.save()
     .then(()=> {
       res.redirect(`/profile/${req.params.id}`)

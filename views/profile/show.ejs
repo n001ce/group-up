@@ -37,6 +37,14 @@
             <td><%= profile.name %></td>
           </tr>
           <tr>
+            <td>Gamer Tag:</td>
+            <td><%= profile.gamerTag %></td>
+          </tr>
+          <tr>
+            <td>Platform:</td>
+            <td><%= profile.platform %></td>
+          </tr>
+          <tr>
             <td>Avatar URL:</td>
             <td>
               <a href="<%= profile.avatar %>">
@@ -55,7 +63,7 @@
       <a 
         class="btn btn-warning"
         role="button" 
-        href="/profiles/<%= profile._id %>/edit"
+        href="/profile/<%= profile._id %>/edit"
       >
         Edit Profile
       </a>
@@ -118,6 +126,7 @@
             </div>
         <% }) %> 
       </div>
+      
       
     </div>
   </section>

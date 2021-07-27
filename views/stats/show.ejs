@@ -28,33 +28,31 @@
       <p class="mt-4 fs-4 text-light">rating:<img src="<%=apiResult.ratingIcon%>" alt="">
         <%= apiResult.rating%></p>
       <p class="mt-4 fs-4 text-light">level:<img src="<%=apiResult.levelIcon%>" alt="">
-        <%= apiResult.level%></p>
+        <%= apiResult.prestige%><%= apiResult.level%></p>
+        <img src="<%=apiResult.prestigeIcon%>" alt="">
+
+      <p class="mt-4 fs-4 text-light">endorcement: <img src="<%=apiResult.endorsementIcon%>" alt="">
+        <%= apiResult.endorcement%></p>
       <p class="mt-4 fs-4 text-light">QuickPlay</p>
       <table class="table table-hover">
         <thead>
-            <tr>
+            <tr class="tableHead">
                 <th scope="col">Cards</th>
                 <th scope="col">Medals</th>
                 <th scope="col">Bronze Medals</th>
-                <th scope="col">Final Blows Avg</th>
-                <th scope="col">Healing Avg</th>
-                <th scope="col">Objective Kills Avg</th>
-                <th scope="col">Objective Time Avg</th>
-                <th scope="col">Solo Kills Avg</th>
+                <th scope="col">Silver Medals</th>
+                <th scope="col">Gold Medals</th>
                 <th scope="col">Games Played</th>
                 <th scope="col">Games Won</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td><%= apiResult.quickPlayStats.cards %> </td>
-                <td><%= apiResult.quickPlayStats.medals %> </td>
-                <td><%= apiResult.quickPlayStats.medalsBronze %> </td>
-                <td><%= apiResult.quickPlayStats.finalBlowsAvg %> </td>
-                <td><%= apiResult.quickPlayStats.healingDoneAvg %> </td>
-                <td><%= apiResult.quickPlayStats.objectiveKillsAvg %> </td>
-                <td><%= apiResult.quickPlayStats.objectiveTimeAvg %> </td>
-                <td><%= apiResult.quickPlayStats.soloKillsAvg %> </td>
+            <tr class="tableSec">
+                <td><%= apiResult.quickPlayStats.awards.cards %> </td>
+                <td><%= apiResult.quickPlayStats.awards.medals %> </td>
+                <td><%= apiResult.quickPlayStats.awards.medalsBronze %> </td>
+                <td><%= apiResult.quickPlayStats.awards.medalsSilver %> </td>
+                <td><%= apiResult.quickPlayStats.awards.medalsGold %> </td>
                 <td><%= apiResult.quickPlayStats.games.played %> </td>
                 <td><%= apiResult.quickPlayStats.games.won%> </td>
                
