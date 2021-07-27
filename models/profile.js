@@ -10,14 +10,6 @@ const profileSchema = mongoose.Schema({
   gamerTag: {type: String, default: "N001CE"},
   avatar: String,
   followers: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
-  srank: Number,
-  srankImg: String,
-  drank: Number,
-  drankImg: String,
-  trank: Number,
-  trankImg: String,
-  level: Number,
-  mostPlayedHero: String,
   platform:{type: String, default: "xbl"},
   region: String
  }, {
