@@ -24,14 +24,14 @@
                 <tr class="tableSec">
                     <td><a href="/posts/<%=post._id %>" class="text-decoration-none text-light"><%= post.title %> </a></td>
                     <td><a href="/profile/<% post.leader._id%>"><%= post.leader.gamerTag%> </a> </td>
-                    <td><% post.queue%> </td>
+                    <td><%= post.queue %> </td>
                     <td><%= post.eroles %> </td>
-                    <td><%= post.support1 %> </td>
-                    <td><%= post.support2 %> </td>
-                    <td><%= post.dps1 %> </td>
-                    <td><%= post.dps2 %> </td>
-                    <td><%= post.tank1 %> </td>
-                    <td><%= post.tank2 %> </td>
+                    <td><%= post.support1 ? "Filled" : "Not Filled" %> </td>
+                    <td><%= post.support2 ? "Filled" : "Not Filled" %> </td>
+                    <td><%= post.dps1 ? "Filled" : "Not Filled" %> </td>
+                    <td><%= post.dps2 ? "Filled" : "Not Filled" %> </td>
+                    <td><%= post.tank1 ? "Filled" : "Not Filled" %> </td>
+                    <td><%= post.tank2 ? "Filled" : "Not Filled" %> </td>
                 </tr>
                 <% })%> 
             </tbody>

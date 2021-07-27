@@ -99,8 +99,12 @@
       <% posts.forEach(post => { %>
         <div class="col">
             <div class="card-body">
+              <p class="card-title fs-4 text-light"><% post.leader %></p>
+              <p class="card-text fs-5 text-light">
+                Title: <%= post.title %>
+              </p>
               <a 
-                href="/posts/<%=post._id%>" 
+                href="/posts/<%=post.postId%>" 
                 class="btn btn-primary"
               >
                 Details
