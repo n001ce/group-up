@@ -4,38 +4,9 @@
 <div id="lfg">
     <div class="padding">
 
-        <table class="table table-hover">
-            <thead>
-                <tr class="tableHead">
-                    <th scope="col">TITLE</th>
-                    <th scope="col">LEADER</th>
-                    <th scope="col">QUEUE</th>
-                    <th scope="col">ENFORCED ROLES</th>
-                    <th scope="col">SUPPORT</th>
-                    <th scope="col">SUPPORT</th>
-                    <th scope="col">DPS</th>
-                    <th scope="col">DPS</th>
-                    <th scope="col">TANK</th>
-                    <th scope="col">TANK</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% posts.forEach((post)=>{ %> 
-                <tr class="tableSec">
-                    <td><a href="/posts/<%=post._id %>" class="text-decoration-none text-light"><%= post.title %> </a></td>
-                    <td><a href="/posts/<%= post.leader.name%>"><%= post.leader.name %> </a> </td>
-                    <td><% post.queue.value %> </td>
-                    <td><%= post.eroles %> </td>
-                    <td><%= post.support1 %> </td>
-                    <td><%= post.support2 %> </td>
-                    <td><%= post.dps1 %> </td>
-                    <td><%= post.dps2 %> </td>
-                    <td><%= post.tank1 %> </td>
-                    <td><%= post.tank2 %> </td>
-                </tr>
-                <% })%> 
-            </tbody>
-        </table>
+      <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+        <button>X</button>
+      </form>
         <a class="nav-item nav-link" href="/posts/new">New LFG</a>
     </div>
 </div>

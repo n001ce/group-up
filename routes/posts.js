@@ -9,9 +9,9 @@ router.get('/:id', isLoggedIn, postsCtrl.show)
 router.post('/', isLoggedIn, postsCtrl.create)
 router.post('/:id/addToWall', isLoggedIn, postsCtrl.addToWall)
 router.post('/:id', isLoggedIn, postsCtrl.reply)
-router.put('/:id/show', isLoggedIn, postsCtrl.update)
+router.put('/:id', isLoggedIn, postsCtrl.update)
 router.delete('/:id/removeFromWall', isLoggedIn, postsCtrl.removeFromWall)
-router.delete('/:id/show', isLoggedIn, postsCtrl.delete)
+router.delete('/:id', isLoggedIn, postsCtrl.delete)
 router.post('/search', isLoggedIn, postsCtrl.search)
 
 function isLoggedIn(req, res, next) {
