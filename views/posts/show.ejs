@@ -2,21 +2,57 @@
 <%- include('../partials/nav') %>
 
 <div id="profile">
+  <div class="padding">
   <div class="container">
       <div class="row">
-          <div class="col-lg-12" id="threadList">
-            <h1>Title : <%= post.title %> </h1><br>
-            <h3>Leader : <%= post.leader.gamerTag %> </h3>
-            <h3>Enforced? <%= post.eroles ? "Enforced" : "Not Enforced" %> </h3>
-            <h3>Main Support: <%= post.support1 ? "Filled" : "Not Filled" %> </h3>
-            <h3>Alt Support: <%= post.support2 ? "Filled" : "Not Filled" %> </h3>
-            <h3>Main DPS: <%= post.dps1 ? "Filled" : "Not Filled" %> </h3>
-            <h3>Alt DPS: <%= post.dps2 ? "Filled" : "Not Filled" %> </h3>
-            <h3>Main Tank: <%= post.tank1 ? "Filled" : "Not Filled" %> </h3>
-            <h3>Off Tank: <%= post.tank2 ? "Filled" : "Not Filled" %> </h3>
+          <div class="col-lg-12">
+            <table class="table table-light table-striped align-middle">
+              <tbody>
+                  <tr>
+                    <td>Leader: </td>
+                    <td><%= post.leader.gamerTag %></td>
+                  </tr>
+                  <tr>
+                    <td>Title:</td>
+                    <td><%= post.title %></td>
+                </tr>
+                <tr>
+                  <td>Queue:</td>
+                  <td><%= post.queue %></td>
+                </tr>
+                <tr>
+                  <td>Enforced Roles</td>
+                  <td><%= post.eroles ? "YES" : "NO" %></td>
+                </tr>
+                <tr>
+                  <td>Support</td>
+                  <td><%= post.support1 ? "FILLED" : "NEED" %></td>
+                </tr>
+                <tr>
+                  <td>Support</td>
+                  <td><%= post.support2 ? "FILLED" : "NEEDED" %></td>
+                </tr>
+                <tr>
+                  <td>Dps</td>
+                  <td><%= post.dps1 ? "FILLED" : "NEEDED"%></td>
+                </tr>
+                <tr>
+                  <td>Dps</td>
+                  <td><%= post.dps2 ? "FILLED" : "NEEDED" %></td>
+                </tr>
+                <tr>
+                  <td>Tank</td>
+                  <td><%= post.tank ? "FILLED" : "NEEDED" %></td>
+                </tr>
+                <tr>
+                  <td>Tank</td>
+                  <td><%= post.tank ? "FILLED" : "NEEDED" %></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
       </div>
-
+    </div>
   <% if (user.profile._id.toString() === post.leader._id.toString()) { %>
     <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
       <button>X</button>

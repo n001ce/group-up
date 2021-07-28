@@ -11,21 +11,9 @@ export {
   show,
   addToWall,
   removeFromWall,
-  reply
 }
 
-function reply(req, res) {
-  // Add author of reply to req.body
-  req.body.author = req.user.profile._id
-  Post.findById(req.params.id)
-  .then(post => {
-    post.replies.push(req.body)
-    post.save()
-    .then(() => {
-      res.redirect(`/posts/${req.params.id}`)
-    })
-  })
-}
+
 
 function index(req, res){
   Post.find({})
@@ -87,7 +75,6 @@ function show(req,res){
     populate:{
       path: 'author'
     }
-
   })
   .then(post=>{
     res.render('posts/show',{
@@ -126,13 +113,13 @@ function addToWall(req, res) {
 
 function removeFromWall(req, res) {
   // Find the game in the database
-  Post.findOne({ postId: req.params.id })
+  Post.findById(req.params.id)
   .then(post => {
     // Remove the user's profile id from collectedBy
-    post.collectedBy.remove({_id: req.user.profile._id})
+    post.collectedBy.remove(req.user.profile._id)
     post.save()
     .then(() => {
-      res.redirect(`/posts/${req.params.id}`)
+      res.redirect(`/profile/${req.user.profile._id}`)
     })
   })
   .catch(err => {

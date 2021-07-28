@@ -75,8 +75,6 @@ function show(req, res) {
     // Use the profile clicked to find games belonging to that user
     Post.find({ collectedBy: profile._id })
     .then(posts => {
-    Stat.find({ collectedBy: profile._id })
-      .then(stats=> {
       // Find the profile of the current logged in user
       Profile.findById(req.user.profile)
       .then(userProfile => {
@@ -86,9 +84,7 @@ function show(req, res) {
           // Profile of the logged in user
           userProfile,
           title: `${profile.name}'s profile`,
-          posts,
-          stats
-        })
+          posts
       })
       })
     })
