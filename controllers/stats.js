@@ -4,7 +4,7 @@ import axios from 'axios'
 export {
   search,
   addToProfile,
-  removeFromProfile
+  removeFromProfile,
 }
 
 function addToProfile(req, res) {
@@ -37,7 +37,7 @@ function addToProfile(req, res) {
   function removeFromProfile(req, res) {
     // Find the game in the database
     Stat.findOne({ statId: req.params.id })
-    .then(stat => {
+    .then(stats => {
       // Remove the user's profile id from collectedBy
       stat.collectedBy.remove({_id: req.user.profile._id})
       stat.save()
@@ -70,4 +70,3 @@ function search(req, res) {
     res.redirect('/')
   })
 }
-

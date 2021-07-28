@@ -8,8 +8,8 @@
 <% } %>
 <%- include('../partials/nav') %>
 
-<main>
-  <section class="bg-dark text-secondary px-4 py-5 text-center">
+<div id="home">
+  <section class="text-secondary px-4 py-5 text-center">
     <% if (profile.avatar) { %>
       <img
         class="image-rounded" 
@@ -24,7 +24,7 @@
     <% } %> 
     <h1 class="display-5 fw-bold text-white pt-2"><%= profile.name %></h1>
     <div class="container py-4">
-      <table class="table table-dark table-striped align-middle">
+      <table class="table table-light table-striped align-middle">
         <tbody>
           <% if (user.profile._id.toString() === profile._id.toString()) { %>
             <tr>
@@ -58,65 +58,81 @@
         </tbody>
       </table>
     </div>
-    <% if (user.profile._id.toString() === profile._id.toString()) { %>
-      <%# This is where we'll add the UI to edit a profile %> 
-      <a 
-        class="btn btn-warning"
-        role="button" 
-        href="/profile/<%= profile._id %>/edit"
-      >
-        Edit Profile
-      </a>
-      <a 
-        class="btn btn-danger ms-4"
-        role="button" 
-        href="/auth/logout"
-      >
-        Logout
-      </a>
-    <% } %>
-    <%# This is where we'll add a button to 'friend/unfriend' a user %> 
-    <%# if this is not my profile page          &&  the user being viewed is not in my friends list %> 
-    <% if (!profile._id.equals(userProfile._id) && !userProfile.followers.includes(profile._id)) { %>
-      <a href="/profiles/<%= profile._id %>/follow" class="btn btn-primary">
-        Add Friend
-      </a>
-    <% } %>
-    <%# if this is not my profile page          &&  the user being viewed is in my friends list %> 
-    <% if (!profile._id.equals(userProfile._id) && userProfile.followers.includes(profile._id)) { %>
-      <a href="/profiles/<%= profile._id %>/unfollow" class="btn btn-primary">
-        Remove Friend
-      </a>
-    <% } %>
-  </section>
-  <section class="bg-light pt-3">
     <div class="container">
-      <h2 class="mb-3"><%= profile.name %>'s Posts</h2>
-      <div
-        class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g1 px-1"
-      >
-      <%# This is where we'll display our friends %>
-      <% posts.forEach(post => { %>
-        <div class="col">
-            <div class="card-body">
-              <p class="card-title fs-4 text-light"><% post.leader %></p>
-              <p class="card-text fs-5 text-light">
-                Title: <%= post.title %>
-              </p>
+      <div class="row">
+          <div class="col-lg-3" id="sidePanel">
+           
+          </div>
+          <div class="col-lg-6" id="threadList" >
+              <div class="container">
+                <h2 class=""><%= profile.gamerTag %>'s Posts</h2>
+                <div class="list-group">
+                <%# This is where we'll display our friends %>
+                <% posts.forEach(post => { %>
+                      <div class="card-body list-group-item">
+                        <p class="card-title fs-4 text-dark"><% post.leader %></p>
+                        <p class="card-text fs-5 text-dark">
+                          Title: <%= post.title %>
+                        </p>
+                        <p class="card-text fs-5 text-dark">
+                          Available Positions:
+                        </p>
+                          <p>Support <%= post.support1 ? "Filled" :"Not Filled" %> </p>
+                          <p>Support <%= post.support2 ? "Filled" : "Not Filled" %></p> 
+                          <p>DPS <%= post.dps1 ? "Filled" : "Not Filled" %> </p>
+                          <p>DPS <%= post.dps2 ? "Filled" : "Not Filled" %> </p>
+                          <p>TANK <%= post.tank1 ? "Filled" : "Not Filled" %> </p>
+                          <p>Tank <%= post.tank2 ? "Filled" : "Not Filled" %> </p>
+                      
+                        <a 
+                          href="/posts/<%=post.postId%>" 
+                          class="btn btn-primary list-group-item-action"
+                        >
+                          Details
+                        </a>
+                      </div>
+                <% }) %>
+                    </div>
+            </div>     
+          </div>
+          <div class="col-lg-3" id="friendsList">
+            <% if (user.profile._id.toString() === profile._id.toString()) { %>
+              <%# This is where we'll add the UI to edit a profile %> 
+              <div class="list-group">
               <a 
-                href="/posts/<%=post.postId%>" 
-                class="btn btn-primary"
+                class="list-group-item list-group-item-action btn btn-warning align-center"
+                role="button" 
+                href="/profile/<%= profile._id %>/edit"
               >
-                Details
+                Edit Profile
+              </a>
+            <a 
+                class="list-group-item list-group-item-action btn btn-danger my-5"
+                role="button" 
+                href="/auth/logout"
+              >
+                Logout
               </a>
             </div>
+            <% } %>
+            <%# This is where we'll add a button to 'friend/unfriend' a user %> 
+            <%# if this is not my profile page          &&  the user being viewed is not in my friends list %> 
+            <% if (!profile._id.equals(userProfile._id) && !userProfile.followers.includes(profile._id)) { %>
+              <a href="/profiles/<%= profile._id %>/follow" class="btn btn-primary">
+                Add Friend
+              </a>
+            <% } %>
+            <%# if this is not my profile page          &&  the user being viewed is in my friends list %> 
+            <% if (!profile._id.equals(userProfile._id) && userProfile.followers.includes(profile._id)) { %>
+              <a href="/profiles/<%= profile._id %>/unfollow" class="btn btn-primary">
+                Remove Friend
+              </a>
+            <% } %>
           </div>
-        </div>
-      <% }) %>
-      
-      
-    </div>
+  </div>
+
   </section>
-</main>
+ 
+</div>
 
 <%- include('../partials/footer') %>

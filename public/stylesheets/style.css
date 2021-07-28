@@ -86,7 +86,7 @@ footer{
 }
 
 .icon{
-  max-width: 200px;
+  max-width: 100px;
 }
 #lfg{
   background: url('/images/pages/volskaya-industries-4.jpg') no-repeat center center fixed;
@@ -107,7 +107,6 @@ footer{
 #friendsList{
   background-color: yellow;
   height: 50vh;
-  padding-right: 40px;
 }
 #sidePanel{
   background-color: red;
@@ -118,8 +117,8 @@ footer{
   background-color: rgba(255, 255, 255, 0.87);
   border-left:solid 2px rgba(27, 27, 27, 0.63);
   border-right:solid 2px rgba(27, 27, 27, 0.63);
-  box-shadow: 3px 0px -3px 0px grey;
   height: 100vh;
+  overflow-y: scroll;
 }
 
 @media (max-width: 768px){
@@ -146,10 +145,7 @@ footer{
   background-color: rgba(202, 196, 196, 0.589);
 }
 
-table{
-  width: 100%;
 
-}
 
 #lfgForm{
   font-family: owfont;
@@ -182,3 +178,4 @@ table{
 #title-input{
   min-width:  400px;
 }
+
