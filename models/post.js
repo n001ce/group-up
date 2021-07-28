@@ -5,12 +5,7 @@ export {
 	Post
 }
 
-const replySchema = new Schema({
-  author: {type: Schema.Types.ObjectId, ref: "Profile"},
-  content: String
-},{
-  timestamps: true
-})
+
 
 const postSchema = new Schema({
   title: String,
@@ -45,7 +40,7 @@ const postSchema = new Schema({
     type: Boolean,
     default: true
   },
-  replies: [replySchema],
+  replies: [{type: Schema.Types.ObjectId, ref: "Reply"}],
   collectedBy: [{type: Schema.Types.ObjectId, ref: "Profile"}]
 },{
   timestamps: true,

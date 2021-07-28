@@ -25,6 +25,7 @@ import { router as authRouter } from './routes/auth.js'
 import { router as postRouter } from './routes/posts.js'
 import { router as profileRouter } from './routes/profiles.js'
 import { router as statRouter } from './routes/stats.js'
+import { router as replyRouter } from './routes/replies.js'
 // view engine setup
 app.set(
   'views',
@@ -71,6 +72,7 @@ app.use('/auth', authRouter)
 app.use('/posts', postRouter)
 app.use('/profile', profileRouter)
 app.use('/stats', statRouter)
+app.use('/replies', replyRouter)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404))
