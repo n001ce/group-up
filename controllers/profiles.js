@@ -16,10 +16,10 @@ export {
 function follow(req, res) {
   Profile.findById(req.user.profile)
   .then(profile => {
-    profile.friends.push(req.params.id)
+    profile.followers.push(req.params.id)
     profile.save()
     .then(()=> {
-      res.redirect(`/profiles/${req.params.id}`)
+      res.redirect(`/profile/${req.params.id}`)
     })
   })
   .catch(err => {
@@ -31,6 +31,7 @@ function follow(req, res) {
 function unfollow(req, res) {
   Profile.findById(req.user.profile)
   .then(profile => {
+    profile.followers.remove({_id: req.params.id})
     profile.save()
     .then(()=> {
       res.redirect(`/profile/${req.params.id}`)
@@ -38,7 +39,7 @@ function unfollow(req, res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/')
+    res.redirect('/posts')
   })
 }
 
