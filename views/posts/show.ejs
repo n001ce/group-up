@@ -133,11 +133,6 @@
                 </h3>
                 <p class="card-text text-dark"><%= reply.content %></p>
               </div>
-              <% if (post?.replies.some(reply => reply.author.equals(user.profile._id))) { %>
-                <form action="/replies/<%= post._id %>?_method=DELETE" method="POST">
-                  <button type="submit">X</button>
-                </form>
-              <% } %>
             </div>
           </div>
           
