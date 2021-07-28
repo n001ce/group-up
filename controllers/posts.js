@@ -52,9 +52,17 @@ function create(req, res){
 }
 
 
-function update(req,res){
-
+function update(req, res) {
+  Post.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  .then(post => {
+    res.redirect(`/post/${post._id}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
 }
+
 
 function deletePost(req, res){
   Post.findByIdAndDelete(req.params.id, function(err, post) {

@@ -135,7 +135,7 @@
               </div>
               <% if (post?.replies.some(reply => reply.author.equals(user.profile._id))) { %>
                 <form action="/replies/<%= post._id %>?_method=DELETE" method="POST">
-                  <button>X</button>
+                  <button type="submit">X</button>
                 </form>
               <% } %>
             </div>
