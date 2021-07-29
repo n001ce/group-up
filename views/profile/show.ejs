@@ -9,6 +9,7 @@
 <%- include('../partials/nav') %>
 
 <div id="home">
+  <div class="container">
   <section class="text-secondary px-4 py-5 text-center">
     <% if (profile.avatar) { %>
       <img
@@ -64,22 +65,23 @@
       </table>
     </div>
   </section>
+</div>
   <div class="container">
     <div class="row">
-      <div class="col-sm-3 " id="sidePanel">
+      <div class="col-lg-3 col-lg-auto col-sm-3 col-sml-auto" id="sidePanel">
         <h2 class="mb-3"><%= profile.name %>'s friends</h2>     
         <% profile.followers.forEach(follower => { %>
           <div class="row">
             <a class="text-decoration-none" href="/profile/<%= follower._id %>">
-              <div class="col-sml-4">
+              <div class="col-lg-6 col-lg-auto col-sm-6 col-sm-auto">
                 <div class="card shadow-sm">
                   <% if (follower.avatar) { %>
                     <img
                       class="card-img-top"
                       src="<%= follower.avatar %>"
                       alt="<%= follower.name %>'s avatar"
-                      width="50"
-                      height="100"
+                      width="100%"
+                      height="50"
                     />
                   <% } else {%>
                     <img
@@ -87,11 +89,11 @@
                       src="/images/icons/user.png"
                       alt="A placeholder avatar"
                       width="100%"
-                      height="170"
+                      height="50"
                     />
                   <% } %>
-                  <div class="card-body">
-                    <p class="card-title text-dark fs-5"><%= follower.name %></p>
+                  <div class="card-body mh-50" >
+                    <p class="card-title text-dark fs-5" ><%= follower.name %></p>
                     <p class="card-text text-dark fs-6 mt-0">
                       Joined <%= follower.createdAt.toLocaleDateString() %>
                     </p>
@@ -102,7 +104,7 @@
           </div>
         <% }) %> 
       </div>
-      <div class="col-sm-6" id="threadList" >
+      <div class="col-lg-6" id="threadList" >
         <div class="container">
           <h2 class=""><%= profile.gamerTag %>'s Posts</h2>
           <div class="list-group">
@@ -133,7 +135,7 @@
           </div>
         </div>     
       </div>
-      <div class="col-sm-3" id="friendsList">
+      <div class="col-lg-3" id="friendsList">
         <% if (user.profile._id.toString() === profile._id.toString()) { %>
           <%# This is where we'll add the UI to edit a profile %> 
           <div class="list-group">
@@ -168,77 +170,6 @@
         <% } %>
       </div>
     </div>
-    <% if (user.profile._id.toString() != profile._id.toString()) { %>
-
-    <div class="container">
-      <form action="/reviews/<%= profile._id %>" method="POST">
-        <div class="mb-3 mt-4">
-          <label 
-            for="exampleFormControlTextarea1" 
-            class="form-label text-light"
-          >
-            Leave a review:
-          </label>
-          <textarea 
-            name="content" 
-            class="form-control" 
-            id="exampleFormControlTextarea1" 
-            rows="3"
-          ></textarea>
-          <select 
-            name="rating" 
-            class="form-select" 
-          >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>        
-        </div>
-        <button class="btn btn-warning"type="submit">Add Review</button>
-      </form>
-      <% } %> 
-      <% if (profile?.reviews.length) { %>
-      <h2 class="text-light my-3">Reviews:</h2>
-      <div 
-        class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g1 px-4"
-      >
-      <% profile.reviews.forEach(review => { %>
-        <div class="col">
-          <div class="card mb-3 bg-secondary">
-            <div class="row g-0">
-              <%= console.log(review._id) %> 
-              <div class="col-3">
-                <img 
-                  src="<%= review.avatar%>" 
-                  class="img-fluid rounded-circle ms-2 mt-2" 
-                  alt="<%= review.name %>'s avatar"
-                >
-              </div>
-              <div class="col-9">
-                <div class="card-body">
-                  <h3 class="card-title text-dark">
-                    <a 
-                      class="text-dark text-decoration-none" 
-                      href="/profiles/<%= review.author %>"
-                    >
-                      <%= review.name %>
-                    </a>
-                  </h3>
-                  <p class="card-text text-dark">
-                    <%= "🌟".repeat(review.rating) %>
-                  </p>
-                  <p class="card-text text-dark"><%= review.content %></p>
-                </div>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-      <% }) %>
-      </div>
-    <% } %>
   </div>
 </div>
 

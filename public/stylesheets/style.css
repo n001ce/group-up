@@ -7,6 +7,10 @@
     font-style: normal;
 }
 
+*{
+  font-family: owfont;
+}
+
 html, body{
   height: 100%;
   width: 100%;
@@ -110,6 +114,7 @@ footer{
 }
 #sidePanel{
   background-color: rgba(255, 0, 0, 0.342);
+  
 }
 
 #threadList{
@@ -117,6 +122,7 @@ footer{
   border-left:solid 2px rgba(27, 27, 27, 0.63);
   border-right:solid 2px rgba(27, 27, 27, 0.63);
   height: 100vh;
+  padding: 30px 30px;
   overflow-y: scroll;
 }
 

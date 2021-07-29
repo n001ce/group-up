@@ -3,6 +3,7 @@ import { Reply } from '../models/reply.js'
 
 export {
   create,
+  deleteReply as delete
 }
 
 function create(req, res) {
@@ -24,3 +25,8 @@ function create(req, res) {
   })
 }
 
+function deleteReply(req, res){
+  Reply.findByIdAndDelete(req.params.id, function(err, reply){
+    res.redirect('/posts')
+    })
+}

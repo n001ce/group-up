@@ -72,13 +72,7 @@ function show(req, res) {
   Profile.findOne({ _id: req.params.id})
   // Populate friends to get profile data for each of them
   .populate('followers')
-  .populate({
-    path: 'reviews',
-    populate: {
-      path: 'author',
-      path: 're'
-    }
-  })
+  .populate('reviews')
   .then(profile => {
     // Use the profile clicked to find games belonging to that user
     Post.find({ collectedBy: profile._id })

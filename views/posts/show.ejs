@@ -140,6 +140,11 @@
                     </ul>
                     <p class="card-text text-dark"><%= reply.content %></p>
                   </div>
+                  <% if (user.profile._id.toString() === reply.author._id.toString()) { %>
+                  <form action="/replies/<%= reply._id %>?_method=DELETE" method="POST">
+                    <button>X</button>
+                  </form>
+                  <% } %> 
                 </div>
               </div>
             </div>

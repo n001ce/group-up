@@ -1,4 +1,5 @@
 import { Post } from '../models/post.js'
+import { Reply } from '../models/reply.js'
 
 
 export {
@@ -84,10 +85,9 @@ function edit(req, res) {
 function deletePost(req, res){
   Post.findByIdAndDelete(req.params.id, function(err, post) {
     Reply.findByIdAndDelete(req.params.id, function(err, replies){
-      
       res.redirect('/posts')
+      })
     })
-  })
 }
 
 
@@ -140,9 +140,6 @@ function addToWall(req, res) {
   })
 }
 
-function roleSelect(req, res){
-
-}
 
 function removeFromWall(req, res) {
   // Find the game in the database
