@@ -1,72 +1,52 @@
-# MEN Stack with OAuth Template
+# GROUP - UP
 
-This is a MEN Stack template that includes OAuth.
+## Objective:
 
-Use this to go build things! 🚀
 
-## To Use This Template
+Create a full CRUD web application using HTML, CSS, JS, NODEJS, EXPRESS.JS, Google Oauth, and mongoDB
 
-__Replace `<name-of-your-app-here>` in the commands below with the name of your app!__
 
-```bash
-git clone https://github.com/SEI-Remote/men-stack-oauth-template.git <name-of-your-app-here>
-cd <name-of-your-app-here>
-```
+## View the Website:
 
-Once you are in the project directory:
 
-```bash
-rm -rf .git
-```
+click [here](https://ow-group-up.herokuapp.com/)
 
-Here's what your command line output should like after this step (note that the indicator that we are in a git repository is gone!)
 
-<img src="https://i.imgur.com/L47kNOZ.png" alt="The command line before and after running the rm -rf .git command. Before git:(main) is visible indiating that the directory contains a git repository, after the command it is not.">
+## Motivation:
 
-Re-initialize a git repository:
 
-```bash
-git init
-```
+Overwatch is a 6 person (soon to be 5) fps strategy game revolved around teamwork, team compositions, and strategy. One of the biggest issues players face in this highly competitive game is the toxicity from random teammates. Currently, you can use the LFG system in the game to find a group to play with. The problem with this is, sometimes when you go to find a group there are none available at the time you are playing. 
 
-Use the GitHub CLI to create a new project repository on GitHub:
+Group-UP fixes this problem by offering users the ability to create their own LFG post and find teammates for when they want to start playing the game. 
 
-```bash
-gh repo create <name-of-your-app-here>
-```
 
-Run npm i to fetch the template's dependencies:
+## Guidelines:
 
-```bash
-npm i
-```
+    *   In order to access the website, you need to register with a google account.
+    *   Once you are registered you will be taken to the LFG post page where you can view open groups, join the groups, and add comments to the posts.
+    *   The navbar allows you to move inbetween the LFG page, View all Profiles page, and a stat search bar.
+    *   The stat search bar will allow you to type in a gamertag (case sensitive) and platform to view that players information.
+    *   When you join a group, the group will show up on your page for others to see, along with the players currently joined.
+    *   The LFG post leader has the only ability to edit, create, update, and delete the post. You can remove yourself from the team by selecting "leave group" button on the LFG show page.
+  
 
-Then, make an initial commit:
+## ERD: 	
+![erd](/public/images/readme/erd.png)
 
-```bash
-git add .
-git commit -m "initial commit"
-git push -u origin main
-```
+## Initial Wireframe:
+![wireframe1](/public/images/readme/wireframe1.png)
+![wireframe2](/public/images/readme/wireframe2.png)
+![wireframe3](/public/images/readme/wireframe3.png)
+![wireframe4](/public/images/readme/wireframe4.png)
 
-touch a .env file:
+## Trello Board: 
+![tello](/public/images/readme/trello.png)
 
-```bash
-touch .env
-```
-
-Fill it with the following:
-
-```
-DATABASE_URL=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-GOOGLE_CALLBACK=https://localhost:3000/auth/google/oauth2callback
-GOOGLE_CLIENT_ID=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-GOOGLE_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-SESSION_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
-
-Replace the `DATABASE_URL`, `GOOGLE_CLIENT_ID`, `GOOGLE_SECRET`, and `SESSION_SECRET` with values that you provide.
-
-Delete this README.md
-
-You're done!
+## Technology Used
+* OAuth with Passport
+* Spotify API
+* Node.js and Express
+* Mongoose and MongoDB
+* EJS
+* JavaScript
+* Bootstrap

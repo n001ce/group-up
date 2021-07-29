@@ -53,13 +53,6 @@ function create(req, res){
   })
 }
 function update(req, res) {
-  req.body.eroles= !!req.body.eroles
-  req.body.support1 = !!req.body.support1
-  req.body.support2= !!req.body.support2
-  req.body.dps1= !!req.body.dps1
-  req.body.dps2= !!req.body.dps2
-  req.body.tank1= !!req.body.tank1
-  req.body.tank2= !!req.body.tank2
   Post.findByIdAndUpdate(req.params.id, req.body, {new: true})
   .then(post => {
     res.redirect(`/posts/${post._id}`)
@@ -90,7 +83,10 @@ function edit(req, res) {
 
 function deletePost(req, res){
   Post.findByIdAndDelete(req.params.id, function(err, post) {
-    res.redirect('/posts')
+    Reply.findByIdAndDelete(req.params.id, function(err, replies){
+      
+      res.redirect('/posts')
+    })
   })
 }
 
@@ -144,16 +140,21 @@ function addToWall(req, res) {
   })
 }
 
+function roleSelect(req, res){
+
+}
+
 function removeFromWall(req, res) {
   // Find the game in the database
   Post.findById(req.params.id)
   .then(post => {
     // Remove the user's profile id from collectedBy
-    post.collectedBy.remove(req.user.profile._id)
+    post.replies.remove(req.user.profile._id)
     post.team.remove(req.user.profile._id)
+    post.collectedBy.remove(req.user.profile._id)
     post.save()
     .then(() => {
-      res.redirect(`/profile/${req.user.profile._id}`)
+      res.redirect(`/posts/${req.params.id}`)
     })
   })
   .catch(err => {

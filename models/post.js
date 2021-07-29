@@ -18,40 +18,36 @@ const postSchema = new Schema({
   },
   support1:{
     type:Boolean,
-    default: isRoleFilled
     },
   support2:{
     type: Boolean,
-    default: isRoleFilled
     },
   dps1:{
     type: Boolean,
-    default: isRoleFilled
     },
   dps2:{
     type: Boolean,
-    default: isRoleFilled
     },
   tank1:{
     type: Boolean,
-    default: isRoleFilled
     },
   tank2:{
     type: Boolean,
-    default: isRoleFilled
   },
   replies: [{type: Schema.Types.ObjectId, ref: "Reply"}],
-  team:[{type: Schema.Types.ObjectId, ref: "Profile"}],
+  team:{
+    type: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
+    validate: [arrayLimit, '{PATH} exceeds the limit of 6'],
+  },
   collectedBy: [{type: Schema.Types.ObjectId, ref: "Profile"}],
 },{
   timestamps: true,
 });
 
-function isRoleFilled(req, res){
-  if(req.team.role != ""){
-    role = req.team.role
-    req.post.forEach(idx => idx === role ? false : [])
-  }
+
+
+function arrayLimit(val) {
+  return val.length <= 6;
 }
 
 const Post = mongoose.model("Post", postSchema);

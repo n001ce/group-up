@@ -69,9 +69,16 @@ function edit(req, res) {
 }
 
 function show(req, res) {
-  Profile.findById(req.params.id)
+  Profile.findOne({ _id: req.params.id})
   // Populate friends to get profile data for each of them
   .populate('followers')
+  .populate({
+    path: 'reviews',
+    populate: {
+      path: 'author',
+      path: 're'
+    }
+  })
   .then(profile => {
     // Use the profile clicked to find games belonging to that user
     Post.find({ collectedBy: profile._id })
@@ -85,7 +92,7 @@ function show(req, res) {
           // Profile of the logged in user
           userProfile,
           title: `${profile.name}'s profile`,
-          posts
+          posts,
       })
       })
     })
