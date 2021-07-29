@@ -18,7 +18,7 @@ function create(req, res) {
       post.replies.push(reply.id)
       post.save()
       .then(() => {
-        res.redirect(`/posts`)
+        res.redirect(`/posts/${post._id}`)
       })
     })
   })
