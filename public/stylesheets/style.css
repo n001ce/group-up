@@ -7,9 +7,7 @@
     font-style: normal;
 }
 
-*{
-  font-family: owfont;
-}
+
 
 html, body{
   height: 100%;
@@ -17,8 +15,7 @@ html, body{
 }
 
 .navbar{
-  background-color: rgb(31, 30, 30);
-  padding: 1% 0;
+  background-color: rgb(82, 80, 80);
   font-size: 1.2em;
 }
 
@@ -73,7 +70,6 @@ html, body{
 footer{
   width: 100%;
   background-color: rgb(31, 30, 30);
-  padding: 5% 5% 10% 5%;
   color: #FFF;
 
 }

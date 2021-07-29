@@ -117,13 +117,9 @@
                 <p class="card-text fs-5 text-dark">
                   Available Positions:
                 </p>
-                  <p>Support <%= post.support1 ? "Filled" :"Not Filled" %> </p>
-                  <p>Support <%= post.support2 ? "Filled" : "Not Filled" %></p> 
-                  <p>DPS <%= post.dps1 ? "Filled" : "Not Filled" %> </p>
-                  <p>DPS <%= post.dps2 ? "Filled" : "Not Filled" %> </p>
-                  <p>TANK <%= post.tank1 ? "Filled" : "Not Filled" %> </p>
-                  <p>Tank <%= post.tank2 ? "Filled" : "Not Filled" %> </p>
-              
+                <% post.team.forEach(member => { %> 
+                  <p><%= console.log(member.gamerTag) %> : <%= member.role %> </p>
+                  <% }) %> 
                 <a 
                   href="/posts/<%=post._id%>" 
                   class="btn btn-primary list-group-item-action"
@@ -172,5 +168,4 @@
     </div>
   </div>
 </div>
-
 <%- include('../partials/footer') %>

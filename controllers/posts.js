@@ -21,6 +21,7 @@ function index(req, res){
   Post.find({})
   .populate('leader')
   .populate('team')
+  .populate('replies')
   .sort({createdAt: "desc"})
   .then(posts=>{
     res.render('posts/index',{
@@ -84,7 +85,7 @@ function edit(req, res) {
 
 function deletePost(req, res){
   Post.findByIdAndDelete(req.params.id, function(err, post) {
-    Reply.findByIdAndDelete(req.params.id, function(err, replies){
+    Reply.findByIdAndDelete(req.params.id, function(err, reply){
       res.redirect('/posts')
       })
     })
@@ -159,5 +160,3 @@ function removeFromWall(req, res) {
     res.redirect('/')
   })
 }
-
-
