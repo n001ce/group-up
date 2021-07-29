@@ -53,13 +53,20 @@ function create(req, res){
   })
 }
 function update(req, res) {
+  req.body.eroles= !!req.body.eroles
+  req.body.support1 = !!req.body.support1
+  req.body.support2= !!req.body.support2
+  req.body.dps1= !!req.body.dps1
+  req.body.dps2= !!req.body.dps2
+  req.body.tank1= !!req.body.tank1
+  req.body.tank2= !!req.body.tank2
   Post.findByIdAndUpdate(req.params.id, req.body, {new: true})
   .then(post => {
     res.redirect(`/posts/${post._id}`)
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/')
+    res.redirect(`/posts`)
   })
 }
 
