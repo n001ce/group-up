@@ -3,7 +3,7 @@
 
 <div id="profile">
   <div class="padding">
-  <div class="container">
+    <div class="container">
       <div class="row">
           <div class="col-lg-12">
             <table class="table table-light table-striped align-middle">
@@ -42,105 +42,110 @@
                 </tr>
                 <tr>
                   <td>Tank</td>
-                  <td><%= post.tank ? "FILLED" : "NEEDED" %></td>
+                  <td><%= post.tank1 ? "FILLED" : "NEEDED" %></td>
                 </tr>
                 <tr>
                   <td>Tank</td>
-                  <td><%= post.tank ? "FILLED" : "NEEDED" %></td>
+                  <td><%= post.tank2 ? "FILLED" : "NEEDED" %></td>
                 </tr>
               </tbody>
             </table>
           </div>
       </div>
     </div>
-  <% if (user.profile._id.toString() === post.leader._id.toString()) { %>
-    <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-      <button>X</button>
-    </form>
-  <% } %>
+    <% if (user.profile._id.toString() === post.leader._id.toString()) { %>
+      <div class="list-group">
+        <a 
+          class="list-group-item list-group-item-action btn btn-warning align-center"
+          role="button" 
+          href="/posts/<%= post._id %>/edit"
+        >
+          Edit Profile
+        </a>
+        <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+          <button>X</button>
+        </form>
+      </div>
+    <% } %>
 
-  <a class="nav-item nav-link" href="/posts/new">New LFG</a>
+    <a class="nav-item nav-link" href="/posts/new">New LFG</a>
+    
 
-  <% if (!post?.collectedBy.some(profile => profile._id.equals(user.profile._id))) { %>
-    <form 
-      class="text-center" 
-      action="/posts/<%= post._id %>/addToWall" 
-      method="POST"
+    <% if (!post?.collectedBy.some(profile => profile._id.equals(user.profile._id))) { %>
+      <form 
+        class="text-center" 
+        action="/posts/<%= post._id %>/addToWall" 
+        method="POST"
       >
         <button class="btn btn-primary">
-          Add To Collection
+          Join Group
         </button> 
-    </form>
-  <% } %>
+      </form>
+    <% } %>
 
-  <% if (post?.collectedBy.some(profile => profile._id.equals(user.profile._id))) { %>
-    <form 
-      class="text-center" 
-      action="/posts/<%= post.id %>/removeFromWall?_method=DELETE" 
-      method="POST"
-    >
-      <button class="btn btn-danger">
-        Remove From Collection
-      </button>
-    </form>
-  <% } %>
-  <% if (!post?.replies.some(reply => reply.author.equals(user.profile._id))) { %>
-    <form action="/replies/<%= post._id %>" method="POST">
-      <div class="mb-3 mt-4">
-        <label 
-          for="exampleFormControlTextarea1" 
-          class="form-label text-light"
-        >
-          Leave a review:
-        </label>
-        <textarea 
-          name="content" 
-          class="form-control" 
-          id="exampleFormControlTextarea1" 
-          rows="3"
-        ></textarea> 
-      </div>
-      <button class="btn btn-warning"type="submit">Add Review</button>
-    </form> 
-  <% } %>
-  <%# This is where we'll display all the reviews for a game %> 
-  <% if (post?.replies.length) { %>
-    <h2 class="text-light my-3">Reviews:</h2>
-    <div 
-      class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g1 px-4"
-    >
-    <% post.replies.forEach(reply => { %>
-      <div class="col">
-        <div class="card mb-3 bg-secondary">
-          <div class="row g-0">
-
-            <div class="col-3">
-              <img 
-                src="<%= reply.author.avatar %>" 
-                class="img-fluid rounded-circle ms-2 mt-2" 
-                alt="<%= reply.author.name %>'s avatar"
-              >
-            </div>
-            <div class="col-9">
-              <div class="card-body">
-                <h3 class="card-title text-dark">
-                  <a 
-                    class="text-dark text-decoration-none" 
-                    href="/profiles/<%= reply.author._id %>"
+    <% if (post?.collectedBy.some(profile => profile._id.equals(user.profile._id))) { %>
+      <form 
+        class="text-center" 
+        action="/posts/<%= post.id %>/removeFromWall?_method=DELETE" 
+        method="POST"
+      >
+        <button class="btn btn-danger">
+          Remove From Collection
+        </button>
+      </form>
+    <% } %>
+    <% if (!post?.replies.some(reply => reply.author.equals(user.profile._id))) { %>
+      <form action="/replies/<%= post._id %>" method="POST">
+        <div class="mb-3 mt-4">
+          <label 
+            for="exampleFormControlTextarea1" 
+            class="form-label text-light"
+          >
+            GROUP UP:
+          </label>
+          <textarea name="content" id="" cols="30" rows="10"></textarea>
+          <button class="btn btn-warning"type="submit">SEND MESSAGE</button>
+      </form> 
+    <% } %>
+    <% if (post?.replies.length) { %>
+      <h2 class="text-light my-3">Replies:</h2>
+      <div 
+        class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g1 px-4"
+      >
+        <% post.replies.forEach(reply => { %>
+          <div class="col">
+            <div class="card mb-3 bg-secondary">
+              <div class="row g-0">
+                <div class="col-3">
+                  <img 
+                    src="<%= reply.author.avatar %>" 
+                    class="img-fluid rounded-circle ms-2 mt-2" 
+                    alt="<%= reply.author.name %>'s avatar"
                   >
-                    <%= reply.author.name %>
-                  </a>
-                </h3>
-                <p class="card-text text-dark"><%= reply.content %></p>
+                </div>
+                <div class="col-9">
+                  <div class="card-body">
+                    <h3 class="card-title text-dark">
+                      <a 
+                        class="text-dark text-decoration-none" 
+                        href="/profile/<%= reply.author._id %>"
+                      >
+                        <%= reply.author.name %>
+                      </a>
+                    </h3>
+                    <ul class="card-text text-dark">
+                      <li class="card-text text-dark"><%= reply.author.gamerTag %></li>
+                      <li class="card-text text-dark"><%= reply.author.platform %></li>
+                    </ul>
+                    <p class="card-text text-dark"><%= reply.content %></p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          
-        </div>
+        <% }) %>
       </div>
-    <% }) %>
-    </div>
-  <% } %>
-</div>
+    <% } %>
   </div>
+</div>
 <%- include('../partials/footer') %>

@@ -6,11 +6,12 @@ export {
   create,
   newPost as new,
   deletePost as delete,
-  update,
   search,
   show,
   addToWall,
   removeFromWall,
+  update,
+  edit
 }
 
 
@@ -18,6 +19,7 @@ export {
 function index(req, res){
   Post.find({})
   .populate('leader')
+  .populate('team')
   .sort({createdAt: "desc"})
   .then(posts=>{
     res.render('posts/index',{
@@ -50,18 +52,33 @@ function create(req, res){
     res.redirect('/posts')
   })
 }
-
-
 function update(req, res) {
   Post.findByIdAndUpdate(req.params.id, req.body, {new: true})
   .then(post => {
-    res.redirect(`/post/${post._id}`)
+    res.redirect(`/posts/${post._id}`)
   })
   .catch(err => {
     console.log(err)
     res.redirect('/')
   })
 }
+
+function edit(req, res) {
+  Post.findById(req.params.id)
+  .populate('team')
+  .then(post => {
+    res.render('posts/edit', {
+      title: `Editing ${post.title}`,
+      post
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
+
 
 
 function deletePost(req, res){
@@ -101,6 +118,7 @@ function addToWall(req, res) {
     // If it does, push the user's profile id to game.collectedBy
     if (post) {
       post.collectedBy.push(req.user.profile._id)
+      post.team.push(req.user.profile._id)
       post.save()
       .then(() => {
         res.redirect(`/posts/${req.params.id}`)
@@ -125,6 +143,7 @@ function removeFromWall(req, res) {
   .then(post => {
     // Remove the user's profile id from collectedBy
     post.collectedBy.remove(req.user.profile._id)
+    post.team.remove(req.user.profile._id)
     post.save()
     .then(() => {
       res.redirect(`/profile/${req.user.profile._id}`)

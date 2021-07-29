@@ -51,6 +51,19 @@
         <option value="pc">PC</option>
       </select>
       </div>
+      <div class="mb-3 w-75">
+        <label for="roleSelect-input" class="form-label">Role</label>
+        <select 
+          class="roleSelect-control" 
+          id="roleSelect-input"
+          name="roleSelect"
+          value="<%= profile.role %>"
+        >
+        <option value="support">Support</option>
+        <option value="dps">DPS</option>
+        <option value="tank">Tank</option>
+      </select>
+      </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </main>

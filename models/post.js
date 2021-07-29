@@ -14,36 +14,44 @@ const postSchema = new Schema({
   queue: String,
   eroles: {
     type: Boolean,
-    default: true
+    default:true
   },
   support1:{
     type:Boolean,
-    default: true
+    default: isRoleFilled
     },
   support2:{
     type: Boolean,
-    default: true
+    default: isRoleFilled
     },
   dps1:{
     type: Boolean,
-    default: true
+    default: isRoleFilled
     },
   dps2:{
     type: Boolean,
-    default: true
+    default: isRoleFilled
     },
   tank1:{
     type: Boolean,
-    default: true
+    default: isRoleFilled
     },
   tank2:{
     type: Boolean,
-    default: true
+    default: isRoleFilled
   },
   replies: [{type: Schema.Types.ObjectId, ref: "Reply"}],
-  collectedBy: [{type: Schema.Types.ObjectId, ref: "Profile"}]
+  team:[{type: Schema.Types.ObjectId, ref: "Profile"}],
+  collectedBy: [{type: Schema.Types.ObjectId, ref: "Profile"}],
 },{
   timestamps: true,
 });
+
+function isRoleFilled(req, res){
+  if(req.team.role != ""){
+    role = req.team.role
+    req.post.forEach(idx => idx === role ? false : [])
+  }
+}
 
 const Post = mongoose.model("Post", postSchema);

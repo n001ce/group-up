@@ -109,8 +109,7 @@ footer{
   height: 50vh;
 }
 #sidePanel{
-  background-color: red;
-  height: 100vh;
+  background-color: rgba(255, 0, 0, 0.342);
 }
 
 #threadList{

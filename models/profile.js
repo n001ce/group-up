@@ -9,9 +9,11 @@ const profileSchema = mongoose.Schema({
   name: String,
   gamerTag: {type: String},
   avatar: String,
-  followers: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
   platform:{type: String, default: "xbl"},
   region: String,
+  roleSelect: {type: String, default: "Support"},
+  followers: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
+  
  }, {
   timestamps: true
 })
