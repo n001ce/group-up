@@ -44,7 +44,7 @@ Group-UP fixes this problem by offering users the ability to create their own LF
 
 ## Technology Used
 * OAuth with Passport
-* Spotify API
+* OW API
 * Node.js and Express
 * Mongoose and MongoDB
 * EJS
