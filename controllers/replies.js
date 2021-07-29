@@ -3,7 +3,6 @@ import { Reply } from '../models/reply.js'
 
 export {
   create,
-  reply
 }
 
 function create(req, res) {
@@ -25,16 +24,3 @@ function create(req, res) {
   })
 }
 
-function reply(req, res) {
-  // Add author of reply to req.body
-  req.body.poster = req.params.id
-  req.body.author = req.user.profile._id
-  Reply.findById(req.params.id)
-  .then(reply => {
-    reply.response.push(req.body)
-    reply.save()
-    .then(() => {
-      res.redirect(`/posts/${req.params.id}`)
-    })
-  })
-}
