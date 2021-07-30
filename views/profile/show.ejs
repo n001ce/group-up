@@ -51,14 +51,14 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-lg-auto col-sm-4 col-sml-auto" id="sidePanel">
-            <h2 class="mb-3">Following</h2>
+            <h2 class="mb-3" id="owfont">Following</h2>
             <% if (profile.followers.length === 0) { %>
              <h2>Not Following Anyone</h2>
             <% } %>     
             <% profile.followers.forEach(follower => { %>
               <div class="list-group" >
                 
-              <a class="text-decoration-none list-group-item" id="followers" href="/profile/<%= follower._id %>">
+              <a class="list-group-item" id="followers" href="/profile/<%= follower._id %>">
                     
                   <div class="card shadow-sm list-group-item" id="followerBox">
                       <% if (follower.avatar) { %>
@@ -91,7 +91,7 @@
           </div>
           <div class="col-lg-8" id="threadList" >
             <div class="container">
-              <h2 class="">GROUPS</h2>
+              <h2 class="mb-3" id="owfont">GROUPS</h2>
               <% if (posts.length === 0) { %>
                 <h2>No Groups Joined</h2>
                <% } %>  

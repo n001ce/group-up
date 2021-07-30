@@ -117,8 +117,8 @@ footer{
 }
 
 #threadList{
+  margin-bottom: 20px;
   text-align: center;
-  padding: 30px 30px;
   height: 100vh;
   overflow-y: scroll;
 }
@@ -205,12 +205,14 @@ footer{
 #reply{
   display: flex;
   flex-wrap: wrap;
-  background-color: #50555a8f;
+  background-color: #50555a44;
   padding-bottom: 10px;
+  
 }
 
 #replybody{
-  background-color: #f99e1a;
+  list-style: none;
+  background-color: #aaaaaa;
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 10px;
@@ -219,9 +221,9 @@ footer{
 #reply button{
   justify-content: center;
   margin-top: 5px;
-  background-color: red;
+  background-color: rgba(194, 72, 72, 0.678);
   border-radius: 10px;
-  color: rgb(21, 149, 235);
+  color: rgb(255, 255, 255);
 }
 
 #statTracker{
