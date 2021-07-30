@@ -1,16 +1,11 @@
 # GROUP - UP
 
-## Objective:
-
-
-Create a full CRUD web application using HTML, CSS, JS, NODEJS, EXPRESS.JS, Google Oauth, and mongoDB
-
-
 ## View the Website:
 
 
 click [here](https://ow-group-up.herokuapp.com/)
 
+### API
 Open OW [api](https://ow-api.com/)
 
 ## Motivation:
