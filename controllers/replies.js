@@ -29,6 +29,6 @@ function create(req, res) {
 
 function deleteReply(req, res){
   Reply.findByIdAndDelete(req.params.id, function(err, reply){
-    res.redirect(`/posts/${post._id}`)
+    res.redirect(`/posts`)
     })
 }
