@@ -2,8 +2,9 @@
 <%- include('../partials/nav') %>
 
 <div id="home">
+    <main>
     <div class="padding">
-      <div class="container col-sm-12 form-group" id="lfgForm">
+      <div class="container" id="lfgForm">
         <h1 class="text-align-center">LOOK FOR GROUP</h1>
         <form action="/posts/<%= post._id %>?_method=PUT" method="POST" >
             <div class="box">
@@ -53,36 +54,35 @@
                                 <%= member.roleSelect %>
                               </p>
                             </div>
-                          </div>
                         </div>
                       </a>
                     </div>
                   <% }) %>
                 </div>
                 <div class="box" id="heroSlots">
-                    <label for="support1-input">
-                        Support
-                        <input type="checkbox" name="support1" checked id="support1-checkbox" value="<%= post.support1 %> "><br>
+                    <label for="support1-input" class="mx-3">
+                        Support<br>
+                        <input type="checkbox" name="support1"  value="<%= post.support1 %> "><br>
                     </label>
-                    <label for="support2-input">
-                        Support
-                        <input type="checkbox" name="support2" checked id="support2-checkbox" value="<%= post.support2 %> "><br>
+                    <label for="support2-input" class="mx-3">
+                        Support<br>
+                        <input type="checkbox" name="support2" value="<%= post.support2 %> "><br>
                     </label>  
-                    <label for="dps1-input">
-                        DPS
-                        <input type="checkbox" name="dps1" checked id="dps1-checkbox" value="<%= post.dps1 %> "><br>
+                    <label for="dps1-input" class="mx-3">
+                        DPS<br>
+                        <input type="checkbox" name="dps1"  value="<%= post.dps1 %> "><br>
                     </label>
-                    <label for="dps2-input">
-                        DPS
-                        <input type="checkbox" name="dps2" checked id="dps2-checkbox" value="<%= post.dps2 %> "><br>
+                    <label for="dps2-input" class="mx-3">
+                        DPS<br>
+                        <input type="checkbox" name="dps2" value="<%= post.dps2 %> "><br>
                     </label>
-                    <label for="tank1-input">
-                        Tank
-                        <input type="checkbox" name="tank1" checked id="tank1-checkbox" value="<%= post.tank1%> "><br>
+                    <label for="tank1-input" class="mx-3">
+                        Tank<br>
+                        <input type="checkbox" name="tank1"  value="<%= post.tank1%> "><br>
                     </label>
-                    <label for="tank2-input">
-                        Tank
-                        <input type="checkbox" name="tank2" checked id="tank2-checkbox" value="<%= post.tank2 %> "><br>
+                    <label for="tank2-input" class="mx-3">
+                        Tank<br>
+                        <input type="checkbox" name="tank2" value="<%= post.tank2 %> "><br>
                     </label
                 </div>
             </div>
@@ -90,6 +90,9 @@
         </form>
       </div>
     </div>
+    </div>
+</div>
+</main>
   </div>
 
 <%- include('../partials/footer') %>

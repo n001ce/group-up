@@ -3,80 +3,78 @@
 
 <div id="home">
   <main>
-  <div class="padding">
-    <div class="container">
-            <table class="table table-light table-striped align-middle">
-              <tbody>
-                  <tr>
-                    <td>Leader: </td>
-                    <td><%= post.leader.gamerTag %></td>
-                  </tr>
-                  <tr>
-                    <td>Title:</td>
-                    <td><%= post.title %></td>
-                </tr>
-                <tr>
-                  <td>Queue:</td>
-                  <td><%= post.queue %></td>
-                </tr>
-                <tr>
-                  <td>Enforced Roles</td>
-                  <td><%= post.eroles ? "YES" : "NO" %></td>
-                </tr>
-                <tr>
-                  <td>Support</td>
-                  <td><%= post.support1 ? "FILLED" : "NEED" %></td>
-                </tr>
-                <tr>
-                  <td>Support</td>
-                  <td><%= post.support2 ? "FILLED" : "NEEDED" %></td>
-                </tr>
-                <tr>
-                  <td>Dps</td>
-                  <td><%= post.dps1 ? "FILLED" : "NEEDED"%></td>
-                </tr>
-                <tr>
-                  <td>Dps</td>
-                  <td><%= post.dps2 ? "FILLED" : "NEEDED" %></td>
-                </tr>
-                <tr>
-                  <td>Tank</td>
-                  <td><%= post.tank1 ? "FILLED" : "NEEDED" %></td>
-                </tr>
-                <tr>
-                  <td>Tank</td>
-                  <td><%= post.tank2 ? "FILLED" : "NEEDED" %></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="container">
-          <% if (user.profile._id.toString() === post.leader._id.toString()) { %>
-              <a 
-                class="btn btn-light align-center"
-                role="button" 
-                href="/posts/<%= post._id %>/edit"
-              >
-              Edit Post
-              </a>
-              <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-                <button>Delete Post</button>
-              </form>
-          <% } %>
-        </div>
-    
-
-    <% if (!post?.collectedBy.some(profile => profile._id.equals(user.profile._id))) { %>
-      <form 
-        class="text-center" 
-        action="/posts/<%= post._id %>/addToWall" 
-        method="POST"
-      >
-        <button class="btn btn-primary">
-          Join Group
-        </button> 
-      </form>
-    <% } %>
+    <div class="padding">
+      <div class="container">
+        <table class="table table-dark table-striped align-middle">
+          <tbody>
+            <tr>
+              <td>Leader: </td>
+              <td><%= post.leader.gamerTag %></td>
+            </tr>
+            <tr>
+              <td>Title:</td>
+              <td><%= post.title %></td>
+            </tr>
+            <tr>
+              <td>Queue:</td>
+              <td><%= post.queue %></td>
+            </tr>
+            <tr>
+              <td>Enforced Roles</td>
+              <td><%= post.eroles ? "YES" : "NO" %></td>
+            </tr>
+            <tr>
+              <td>Support</td>
+              <td><%= post.support1 ? "FILLED" : "NEED" %></td>
+            </tr>
+            <tr>
+              <td>Support</td>
+              <td><%= post.support2 ? "FILLED" : "NEEDED" %></td>
+            </tr>
+            <tr>
+              <td>Dps</td>
+              <td><%= post.dps1 ? "FILLED" : "NEEDED"%></td>
+            </tr>
+            <tr>
+              <td>Dps</td>
+              <td><%= post.dps2 ? "FILLED" : "NEEDED" %></td>
+            </tr>
+            <tr>
+              <td>Tank</td>
+              <td><%= post.tank1 ? "FILLED" : "NEEDED" %></td>
+            </tr>
+            <tr>
+              <td>Tank</td>
+              <td><%= post.tank2 ? "FILLED" : "NEEDED" %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="container">
+        <% if (user.profile._id.toString() === post.leader._id.toString()) { %>
+          <a 
+            class="btn btn-primary align-center mb-3"
+            role="button" 
+            href="/posts/<%= post._id %>/edit"
+          >
+          Edit Post
+          </a>
+          <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+            <button class="bg-warning">Delete Post</button>
+          </form>
+        <% } %>
+      </div>
+      <% if (!post?.collectedBy.some(profile => profile._id.equals(user.profile._id))) { %>
+        <form 
+          class="text-center" 
+          action="/posts/<%= post._id %>/addToWall" 
+          method="POST"
+        >
+          <button class="btn btn-primary">
+            Join Group
+          </button> 
+        </form>
+      <% } %>
     <% if (post?.collectedBy.some(profile => profile._id.equals(user.profile._id))) { %>
       <form 
         class="text-center" 
@@ -88,10 +86,10 @@
         </button>
       </form>
     <% } %>
+    <div class="container">
     <form action="/replies/<%= post._id %>" method="POST" class="mb-3">
-      <h2 class="mb-3">Write a Response</h2>
       <div class="mb-3 mx-5">
-        <label for="response-content" class="form-label">Reply</label>
+        <label for="response-content" class="form-label" id="owfont">Reply</label>
         <textarea 
           class="form-control" 
           id="response-content" 
@@ -101,6 +99,7 @@
       </div>
       <button class="btn btn-primary ms-5" type="submit">Reply</button>
     </form>
+  </div>
     <% if (post?.replies.length) { %>
       <h2 class="text-light my-3">Replies:</h2>
       <div 
@@ -108,19 +107,20 @@
       >
         <% post.replies.forEach(reply => { %>
           
-          <div class="col">
-            <div class="card mb-3 bg-secondary">
+          <div class="col" >
+            <div class="card mb-3 bg-secondary" id="reply">
               <div class="row g-0">
-                <div class="col-3">
+                <div class="col-3" id="reply">
                   <img 
                     src="<%= reply.author.avatar %>" 
                     class="img-fluid rounded-circle ms-2 mt-2" 
                     alt="<%= reply.author.name %>'s avatar"
+                    height = "30%"
                   >
                 </div>
-                <div class="col-9">
-                  <div class="card-body">
-                    <h3 class="card-title text-dark">
+                <div class="col-9" id="reply">
+                  <div class="card-body" id="replybody">
+                    <h3 class="card-title text-dark" id="replyheader">
                       <a 
                         class="text-dark text-decoration-none" 
                         href="/profile/<%= reply.author._id %>"
@@ -128,15 +128,15 @@
                         <%= reply.author.name %>
                       </a>
                     </h3>
-                    <ul class="card-text text-dark">
+                    <ul class="card-text text-dark" id="replylist">
                       <li class="card-text text-dark"><%= reply.author.gamerTag %></li>
                       <li class="card-text text-dark"><%= reply.author.platform %></li>
                     </ul>
-                    <p class="card-text text-dark"><%= reply.content %></p>
+                    <div class="card-text text-dark" id="replycontent"><%= reply.content %></div>
                   </div>
                   <% if (user.profile._id.toString() === reply.author._id.toString()) { %>
                   <form action="/replies/<%= reply._id %>?_method=DELETE" method="POST">
-                    <button>X</button>
+                    <button>Delete Reply</button>
                   </form>
                   <% } %> 
                 </div>

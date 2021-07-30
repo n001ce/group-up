@@ -27,10 +27,9 @@
     <div class="container py-4">
       <table class="table table-light table-striped align-middle">
         <tbody>
-          <% if (user.profile._id.toString() === profile._id.toString()) { %>
             <tr>
               <td>Google Email:</td>
-              <td><%= user.email %></td>
+              <td><%= profile.email %></td>
             </tr>
           
           <tr>
@@ -60,7 +59,6 @@
               </a>
             </td>
           </tr>
-          <% } %>
         </tbody>
       </table>
       <% if (user.profile._id.toString() === profile._id.toString()) { %>

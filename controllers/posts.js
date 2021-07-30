@@ -1,3 +1,4 @@
+import { Passport } from 'passport'
 import { Post } from '../models/post.js'
 import { Reply } from '../models/reply.js'
 
@@ -12,7 +13,7 @@ export {
   addToWall,
   removeFromWall,
   update,
-  edit
+  edit,
 }
 
 

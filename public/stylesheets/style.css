@@ -13,8 +13,8 @@
 
 
 html, body{
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
 }
 
 .navbar{
@@ -81,7 +81,7 @@ footer{
 .fa{
   padding: 15px;
   font-size: 25px;
-  color: #ffda06;;
+  color: #ffda06;
 }
 
 .fa:hover{
@@ -123,19 +123,7 @@ footer{
   overflow-y: scroll;
 }
 
-@media (max-width: 768px){
-  .landing-text h1{
-      font-size: 300%;
-  }
-  .fa{
-      font-size: 20px;
-      padding: 10px;
-  }
-  .icon{
-      padding-top: 5%;
-      max-width: 100px;
-  }
-}
+
 
 .tableHead{
   color: white;
@@ -147,28 +135,30 @@ footer{
   background-color: rgba(202, 196, 196, 0.589);
 }
 
+#lfgForm li{
+  gap: 40px;
+}
 
 
 #lfgForm{
   font-family: owfont;
   text-align: center;
-  background-color: rgb(16, 1, 85);
+  background-color: #50555ab7;
   padding: 40px 40px;
   border-radius: 10px;
   box-shadow:rgba(43, 42, 42, 0.39) 10px 10px 10px 10px,rgba(24, 23, 23, 0.397) -10px -10px 10px 10px;
-  color: white;
+  color: #f99e1a;
 }
 #heroSlots{
   display: flex;
   flex-wrap: wrap;
+  row-gap: 40px;
 }
 .box{
   font-family:owfont;
-  background-color: rgba(48, 7, 230, 0.123);
+  background-color: #43484c;
   padding: 20px;
   text-align: center;
-  width: 100%;
-  color: white;
   justify-content: center;
   justify-self: center;
   margin-top: 10px;
@@ -210,4 +200,26 @@ footer{
 /* width */
 ::-webkit-scrollbar {
   width: 0px;
+}
+
+#reply{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #50555a8f;
+  padding-bottom: 10px;
+}
+
+#replybody{
+  background-color: #f99e1a;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+#reply button{
+  justify-content: center;
+  margin-top: 5px;
+  background-color: red;
+  border-radius: 10px;
+  color: white;
 }
