@@ -86,3 +86,7 @@ Group-UP fixes this problem by offering users the ability to create their own LF
 * AAU I want to be notified when my LFG is filled.
 
 * AAU I want the LFG to be updated when a user joins my group with what role they selected.
+
+## References
+
+[images](https://overwatch.fandom.com/wiki/Overwatch_Wiki)

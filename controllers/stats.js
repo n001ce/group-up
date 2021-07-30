@@ -3,28 +3,8 @@ import axios from 'axios'
 
 export {
   search,
-  createStat as create
 }
 
-function createStat(req, res) {
-    req.body.gamerTag = req.profile.gamerTag
-    req.body.platform = req.profile.platform
-    axios.get(`https://ow-api.com/v1/stats/${req.body.platform}/us/${req.body.gamerTag}/profile`)
-    .then((response) => {  
-    Stat.create(req.body)
-    .then((stat)=> {
-      res.render("stats/show", {
-        title: "Player Details",
-        apiResult: response.data,
-        stat
-      })
-    })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
-  })
-}
   
 
 
