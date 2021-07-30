@@ -54,20 +54,20 @@
         </div>
         <div class="col-sm-3 mt-3">
           <div class="container" id="statBox">
-            <h3>Level</h3>
-            <p><%= apiResult.prestige%><%= apiResult.level%></p>
-          </div>
-        </div>
-        <div class="col-sm-3 mt-3">
-          <div class="container" id="statBox">
-            <h3>Endorsement</h3>
-            <p><%= apiResult.endorsement%></p>
-          </div>
-        </div>
-        <div class="col-sm-3 mt-3">
-          <div class="container" id="statBox">
             <h3>Games Played</h3>
             <p><%= apiResult.quickPlayStats.games.played %> </p>
+          </div>
+        </div>
+        <div class="col-sm-3 mt-3">
+          <div class="container" id="statBox">
+            <h3>Games Won</h3>
+            <p><%= apiResult.quickPlayStats.games.won %><%= apiResult.level%></p>
+          </div>
+        </div>
+        <div class="col-sm-3 mt-3">
+          <div class="container" id="statBox">
+            <h3>Endorsement Level</h3>
+            <p><%= apiResult.endorsement%></p>
           </div>
         </div>
         <div class="row d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -107,7 +107,7 @@
           <div class="col-sm-3 mt-3">
             <div class="container" id="statBox">
               <h3>Games Played</h3>
-              <p><%= apiResult.competitiveStats.games.played%></p>
+              <p><%= apiResult.competitiveStats.games.won%></p>
             </div>
           </div>
           <div class="col-sm-3 mt-3">
@@ -118,8 +118,8 @@
           </div>
           <div class="col-sm-3 mt-3">
             <div class="container" id="statBox">
-              <h3>Games Played</h3>
-              <p><%= apiResult.quickPlayStats.games.played %> </p>
+              <h3>Rating</h3>
+              <p><%= apiResult.rating %> </p>
             </div>
           </div>
     </div>
