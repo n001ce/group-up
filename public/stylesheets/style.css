@@ -261,3 +261,8 @@ footer{
   border-radius: 10px;
   width: 250px;
 }
+
+#replyBox{
+  overflow-y: scroll;
+  height: 50vh;
+}
