@@ -1,3 +1,5 @@
+
+
 @font-face {
     font-family: 'owfont';
     src: url('/images/pages/big_noodle_titling_oblique.ttf');
@@ -191,10 +193,16 @@ footer{
 }
 
 #followers{
-  background-color: #50555a8f;
+  background-color: transparent;
+  border: none;
 }
 #followers ::hover{
   background: transparent;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
 }
 
 #reply{
@@ -227,7 +235,7 @@ footer{
 }
 
 #statTracker{
-  background-color: rgba(14, 115, 173, 0.568);
+  background-color: rgba(14, 165, 252, 0.568);
   font-family: 'owfont';
 }
 
