@@ -42,7 +42,7 @@ Group-UP fixes this problem by offering users the ability to create their own LF
 ![wireframe4](/public/images/readme/wireframe4.png)
 
 ## Trello Board: 
-![tello](/public/images/readme/trello.png)
+[Trello](https://trello.com/b/iWO0Idp6/overwatch-lfg)
 
 ## Technology Used
 * OAuth with Passport
