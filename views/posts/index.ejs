@@ -25,7 +25,7 @@
                             <% posts.forEach((post,indx)=>{ %> 
                             <tr class="tableSec">
                                 <td><a href="/posts/<%=post._id %>" class="text-decoration-none text-light"><%= post.title %> </a></td>
-                                <td><a href="/profile/<%= post.leader._id %>"><%= post.leader.gamerTag%> </a> </td>
+                                <td><a href="/profile/<%= post.leader.id %>"><%= post.leader.gamerTag%> </a> </td>
                                 <td><%= post.queue %> </td>
                                 <td><%= post.eroles %> </td>
                                 <td><%= post.support1 ? "Filled" : "Not Filled" %> </td>
