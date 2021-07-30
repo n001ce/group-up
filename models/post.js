@@ -14,7 +14,6 @@ const postSchema = new Schema({
   queue: String,
   eroles: {
     type: Boolean,
-    default:true
   },
   support1:{
     type:Boolean,

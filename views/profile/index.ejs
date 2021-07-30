@@ -1,7 +1,7 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<div id="profile">
+<div id="home">
   <div class="container py-5 px-3">
     <div 
       class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g5 g-sm-3 g-xxl-5 px-sm-5 px-4"
@@ -9,10 +9,10 @@
       <% profiles.forEach(profile => { %>
         <div class="col">
           <a class="text-decoration-none" href="/profile/<%= profile._id %>">
-            <div class="card shadow-sm">
+            <div class="card shadow-sm bg-dark">
               <% if (profile.avatar) { %>
                 <img
-                  class="card-img-top"
+                  class="card-img-top rounded-circle bg-dark"
                   src="<%= profile.avatar %>"
                   alt="<%= profile.name %>'s avatar"
                   width="100%"
@@ -27,12 +27,15 @@
                   height="170"
                 />
               <% } %>
-              <div class="card-body">
+              <div class="card-body bg-warning">
                 <p class="card-title fs-5 text-dark mb-0">
                   <%= profile.name %>
+                  <%= profile.gamerTag %> 
                 </p>
                 <p class="card-text text-dark fs-6 mt-0">
-                  Joined <%= profile.createdAt.toLocaleDateString() %>
+                  Platform <%= profile.platform %>
+                <p class="card-text text-dark fs-6 mt-0">
+                  Role <%= profile.role %>
                 </p>
               </div>
             </div>

@@ -9,26 +9,30 @@
         class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
       >
         <ul
-          class="nav col-12 col-lg-auto me-lg-auto col-sm-12 col-sm-auto mb-2 mb-md-0 justify-content-center"
+          class="nav col-12 col-lg-auto me-lg-auto col-sm-12 col-sm-automb-2 mb-md-0 justify-content-center"
         >
           <li class="d-flex align-items-center mb-2 mb-lg-0 fs-3">
-            <a href="/" class="text-light text-decoration-none">Group Up <i class="fa fa-user-plus" aria-hidden="true"></i></a>
+            <a href="/" class="text-warning text-decoration-none">Group Up <i class="fa fa-user-plus" aria-hidden="true"></i></a>
           </li>
+          <% if (user) { %>
           <li class="d-flex align-items-center ms-3 mb-2 mb-lg-0">
             <a href="/profile" class="text-light text-decoration-none">
               View Users
             </a>
           </li>
-          <% if (user) { %>
+          <li class="d-flex align-items-center ms-3 mb-2 mb-lg-0">
+            <a href="/posts/new" class="text-light text-decoration-none">
+              New LFG
+            </a>
+          </li>
             <li class="d-flex align-items-center ms-3 mb-2 mb-lg-0">
               <a href="/posts" class="text-light text-decoration-none">
                 LFG
               </a>
             </li>
-          <% } %>
         </ul>
+        <label for="stat-search" class="search-text">Stat Search</label>
         <form action="/stats/search" method="POST" class="d-flex align-items-center me-3">
-          Stat Search
             <input name="gamerTag" class="form-control me-2" type="search" placeholder="CASE SENSITIVE" aria-label="Search">
             <select name="platform" id="">
               <option hidden="">PLATFORM</option>
@@ -37,7 +41,6 @@
               <option value="battlenet">PC</option>
             </select>
           </form>
-          <% if (user) { %>
             <div id="profile-dropdown" class="dropdown text-end">
               <a 
                 id="dropdownUser"
@@ -61,7 +64,7 @@
                 <% } %> 
               </a>
               <ul 
-                class="dropdown-menu bg-secondary" 
+                class="dropdown-menu" 
                 aria-labelledby="dropdownUser"
               >
                 <li>

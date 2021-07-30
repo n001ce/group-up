@@ -7,6 +7,9 @@
     font-style: normal;
 }
 
+.card{
+  font-family: 'owfont'
+}
 
 
 html, body{
@@ -24,10 +27,10 @@ html, body{
   padding: 0 15px 5px
 }
 .navbar-default .navbar-nav li a{
-  color: #d5d5d5;
+  color: #b69b03a1;
 }
 .navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:active{
-  color: white
+  color: #b69b03a1;
 }
 
 #home{
@@ -46,6 +49,7 @@ html, body{
 }
 
 .landing-text h1{
+  font-family:'owfont';
   font-size: 500%;
   font-weight: 700;
 }
@@ -77,7 +81,7 @@ footer{
 .fa{
   padding: 15px;
   font-size: 25px;
-  color: #FFF;
+  color: #ffda06;;
 }
 
 .fa:hover{
@@ -109,15 +113,12 @@ footer{
   height: 50vh;
 }
 #sidePanel{
-  background-color: rgba(255, 0, 0, 0.342);
+  overflow-y: scroll;
   
 }
 
 #threadList{
-  background-color: rgba(255, 255, 255, 0.87);
-  border-left:solid 2px rgba(27, 27, 27, 0.63);
-  border-right:solid 2px rgba(27, 27, 27, 0.63);
-  height: 100vh;
+  text-align: center;
   padding: 30px 30px;
   overflow-y: scroll;
 }
@@ -180,3 +181,33 @@ footer{
   min-width:  400px;
 }
 
+#editProfile{
+  font-size: 20px;
+  background-color:	#43484c;
+  padding-bottom: 40px;
+  padding-top: 40px;
+  border-radius: 20px;
+  color: white;
+}
+
+#owfont{
+  font-family: "owfont";
+  font-size: 50px;
+  color: #f99e1a;
+}
+
+#profile-input{
+  background-color:#50555a8f;
+}
+
+#followers{
+  background-color: #50555a8f;
+}
+#followers ::hover{
+  background: transparent;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+}

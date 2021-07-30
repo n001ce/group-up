@@ -63,45 +63,75 @@
           <% } %>
         </tbody>
       </table>
+      <% if (user.profile._id.toString() === profile._id.toString()) { %>
+        <%# This is where we'll add the UI to edit a profile %> 
+          <a 
+            class="btn btn-warning align-center"
+            role="button" 
+            href="/profile/<%= profile._id %>/edit"
+          >
+            Edit Profile
+          </a>
+          <a 
+            class=" btn btn-danger my-5"
+            role="button" 
+            href="/auth/logout"
+          >
+            Logout
+          </a>
+      <% } %>
+      <%# This is where we'll add a button to 'friend/unfriend' a user %> 
+      <%# if this is not my profile page          &&  the user being viewed is not in my friends list %> 
+      <% if (!profile._id.equals(userProfile._id) && !userProfile.followers.includes(profile._id)) { %>
+        <a href="/profile/<%= profile._id %>/follow" class="btn btn-primary">
+          Follow
+        </a>
+      <% } %>
+      <%# if this is not my profile page          &&  the user being viewed is in my friends list %> 
+      <% if (!profile._id.equals(userProfile._id) && userProfile.followers.includes(profile._id)) { %>
+        <a href="/profile/<%= profile._id %>/unfollow" class="btn btn-primary">
+          Unfollow
+        </a>
+      <% } %>
     </div>
   </section>
 </div>
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-lg-auto col-sm-3 col-sml-auto" id="sidePanel">
-        <h2 class="mb-3"><%= profile.name %>'s friends</h2>     
+        <h2 class="mb-3">Following</h2>     
         <% profile.followers.forEach(follower => { %>
-          <div class="row">
-            <a class="text-decoration-none" href="/profile/<%= follower._id %>">
-              <div class="col-lg-6 col-lg-auto col-sm-6 col-sm-auto">
-                <div class="card shadow-sm">
+          <div class="list-group" >
+            
+          <a class="text-decoration-none list-group-item" id="followers" href="/profile/<%= follower._id %>">
+                
+              <div class="card shadow-sm list-group-item">
                   <% if (follower.avatar) { %>
                     <img
                       class="card-img-top"
                       src="<%= follower.avatar %>"
                       alt="<%= follower.name %>'s avatar"
                       width="100%"
-                      height="50"
+                      height="100"
                     />
                   <% } else {%>
                     <img
-                      class="card-img-top"
+                      class="card-img-top list-group-item"
                       src="/images/icons/user.png"
                       alt="A placeholder avatar"
                       width="100%"
                       height="50"
                     />
                   <% } %>
-                  <div class="card-body mh-50" >
+                  <div class="card-body mh-50 list-group-item" >
                     <p class="card-title text-dark fs-5" ><%= follower.name %></p>
                     <p class="card-text text-dark fs-6 mt-0">
                       Joined <%= follower.createdAt.toLocaleDateString() %>
                     </p>
                   </div>
                 </div>
-              </div>
-            </a>
-          </div>
+              </a>
+            </div>
         <% }) %> 
       </div>
       <div class="col-lg-6" id="threadList" >
@@ -117,9 +147,14 @@
                 <p class="card-text fs-5 text-dark">
                   Available Positions:
                 </p>
-                <% post.team.forEach(member => { %> 
-                  <p><%= console.log(member.gamerTag) %> : <%= member.role %> </p>
-                  <% }) %> 
+                <ul>
+                  <li><%= post.suppor1 ? "Filled" : "Empty"  %> </li>
+                  <li><%= post.suppor2 ? "Filled" : "Empty"  %> </li>
+                  <li><%= post.dps1 ? "Filled" : "Empty"  %> </li>
+                  <li><%= post.dps2 ? "Filled" : "Empty"  %> </li>
+                  <li><%= post.tank1 ? "Filled" : "Empty"  %> </li>
+                  <li><%= post.tank2 ? "Filled" : "Empty"  %> </li>
+                </ul>
                 <a 
                   href="/posts/<%=post._id%>" 
                   class="btn btn-primary list-group-item-action"
@@ -132,38 +167,7 @@
         </div>     
       </div>
       <div class="col-lg-3" id="friendsList">
-        <% if (user.profile._id.toString() === profile._id.toString()) { %>
-          <%# This is where we'll add the UI to edit a profile %> 
-          <div class="list-group">
-            <a 
-              class="list-group-item list-group-item-action btn btn-warning align-center"
-              role="button" 
-              href="/profile/<%= profile._id %>/edit"
-            >
-              Edit Profile
-            </a>
-            <a 
-              class="list-group-item list-group-item-action btn btn-danger my-5"
-              role="button" 
-              href="/auth/logout"
-            >
-              Logout
-            </a>
-          </div>
-        <% } %>
-        <%# This is where we'll add a button to 'friend/unfriend' a user %> 
-        <%# if this is not my profile page          &&  the user being viewed is not in my friends list %> 
-        <% if (!profile._id.equals(userProfile._id) && !userProfile.followers.includes(profile._id)) { %>
-          <a href="/profile/<%= profile._id %>/follow" class="btn btn-primary">
-            Follow
-          </a>
-        <% } %>
-        <%# if this is not my profile page          &&  the user being viewed is in my friends list %> 
-        <% if (!profile._id.equals(userProfile._id) && userProfile.followers.includes(profile._id)) { %>
-          <a href="/profile/<%= profile._id %>/unfollow" class="btn btn-primary">
-            Unfollow
-          </a>
-        <% } %>
+        
       </div>
     </div>
   </div>

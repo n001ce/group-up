@@ -1,11 +1,10 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<div id="profile">
+<div id="home">
+  <main>
   <div class="padding">
     <div class="container">
-      <div class="row">
-          <div class="col-lg-12">
             <table class="table table-light table-striped align-middle">
               <tbody>
                   <tr>
@@ -51,24 +50,20 @@
               </tbody>
             </table>
           </div>
-      </div>
-    </div>
-    <% if (user.profile._id.toString() === post.leader._id.toString()) { %>
-      <div class="list-group">
-        <a 
-          class="list-group-item list-group-item-action btn btn-warning align-center"
-          role="button" 
-          href="/posts/<%= post._id %>/edit"
-        >
-          Edit Post
-        </a>
-        <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-          <button>X</button>
-        </form>
-      </div>
-    <% } %>
-
-    <a class="nav-item nav-link" href="/posts/new">New LFG</a>
+          <div class="container">
+          <% if (user.profile._id.toString() === post.leader._id.toString()) { %>
+              <a 
+                class="btn btn-light align-center"
+                role="button" 
+                href="/posts/<%= post._id %>/edit"
+              >
+              Edit Post
+              </a>
+              <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                <button>Delete Post</button>
+              </form>
+          <% } %>
+        </div>
     
 
     <% if (!post?.collectedBy.some(profile => profile._id.equals(user.profile._id))) { %>
@@ -153,5 +148,6 @@
       </div>
     <% } %>
   </div>
+</main>
 </div>
 <%- include('../partials/footer') %>

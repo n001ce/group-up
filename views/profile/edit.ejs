@@ -1,14 +1,19 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<main>
+<div id="home">
+  <div class="padding">
+  <main>
+   
   <%# Add the action below as the update UI %> 
   <form 
     class="container d-flex flex-column align-items-center"
     action="/profile/<%= profile._id %>?_method=PUT"
     method="POST"
+    id="editProfile"
   >
-    <div class="mb-3 w-75">
+  <h1 class="text-align-center" id="owfont">EDIT PROFILE</h1>
+    <div class="mb-3 w-75" id="profile-input">
       <label for="name-input" class="form-label">Name</label>
       <input 
         type="text"
@@ -18,7 +23,7 @@
         value="<%= profile.name %>"
       >
     </div>
-    <div class="mb-3 w-75">
+    <div class="mb-3 w-75" id="profile-input">
       <label for="avatar-input" class="form-label">Avatar</label>
       <input 
         type="url" 
@@ -28,7 +33,7 @@
         value="<%= profile.avatar %>"
       >
     </div>
-    <div class="mb-3 w-75">
+    <div class="mb-3 w-75" id="profile-input">
         <label for="gamerTag-input" class="form-label">Gamer Tag</label>
         <input 
           type="text" 
@@ -38,7 +43,7 @@
           value="<%= profile.gamerTag %>"
         >
       </div>
-      <div class="mb-3 w-75">
+      <div class="mb-3 w-75" id="profile-input">
         <label for="platform-input" class="form-label">Platform</label>
         <select 
           class="form-control" 
@@ -51,10 +56,10 @@
         <option value="pc">PC</option>
       </select>
       </div>
-      <div class="mb-3 w-75">
+      <div class="mb-3 w-75" id="profile-input">
         <label for="roleSelect-input" class="form-label">Role</label>
         <select 
-          class="roleSelect-control" 
+          class="form-control" 
           id="roleSelect-input"
           name="roleSelect"
           value="<%= profile.role %>"
@@ -67,5 +72,7 @@
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </main>
+</div>
+</div>
 
 <%- include('../partials/footer') %>

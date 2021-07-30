@@ -8,18 +8,18 @@
         <form action="/posts/<%= post._id %>?_method=PUT" method="POST" >
             <div class="box">
                 <label for="title-input"><h3>Title: </h3></label><br>
-                <input type="text" id="title-input" name="title">
+                <input type="text" id="title-input" name="title" value="<%= post.title %> ">
               </div>
               <div class="box">
                 <label for="queue-input"><h3>QUEUE</h3></label>
-                <select class="form-select align-items-center justify-content-between" id="exampleFormControlSelect2" name="queue">
-                  <option value="Competitive">Competitive</option>
+                <select class="form-select align-items-center justify-content-between" id="exampleFormControlSelect2" name="queue" value="<%= post.queue %> ">
+                  <option value="Competitive" >Competitive</option>
                   <option value="QuickPlay">Quick Play</option>
                 </select>
               </div>
               <div class="box">
                 <label for="eroles-input"><h3>Enforced Roles</h3></label><br>
-                <input type="checkbox" name="eroles" checked id ="eroles-checkbox" value="eroles">Yes/No<br>
+                <input type="checkbox" name="eroles" checked id ="eroles-checkbox" value="<%= post.eroles %> " >Yes/No<br>
               </div>
               <div class="box">
                 <h2>Hero Slots</h2><br>
@@ -62,27 +62,27 @@
                 <div class="box" id="heroSlots">
                     <label for="support1-input">
                         Support
-                        <input type="checkbox" name="support1" checked id="support1-checkbox" value="support1"><br>
+                        <input type="checkbox" name="support1" checked id="support1-checkbox" value="<%= post.support1 %> "><br>
                     </label>
                     <label for="support2-input">
                         Support
-                        <input type="checkbox" name="support2" checked id="support2-checkbox" value="support2"><br>
+                        <input type="checkbox" name="support2" checked id="support2-checkbox" value="<%= post.support2 %> "><br>
                     </label>  
                     <label for="dps1-input">
                         DPS
-                        <input type="checkbox" name="dps1" checked id="dps1-checkbox" value="dps1"><br>
+                        <input type="checkbox" name="dps1" checked id="dps1-checkbox" value="<%= post.dps1 %> "><br>
                     </label>
                     <label for="dps2-input">
                         DPS
-                        <input type="checkbox" name="dps2" checked id="dps2-checkbox" value="dps2"><br>
+                        <input type="checkbox" name="dps2" checked id="dps2-checkbox" value="<%= post.dps2 %> "><br>
                     </label>
                     <label for="tank1-input">
                         Tank
-                        <input type="checkbox" name="tank1" checked id="tank1-checkbox" value="tank1"><br>
+                        <input type="checkbox" name="tank1" checked id="tank1-checkbox" value="<%= post.tank1%> "><br>
                     </label>
                     <label for="tank2-input">
                         Tank
-                        <input type="checkbox" name="tank2" checked id="tank2-checkbox" value="tank2"><br>
+                        <input type="checkbox" name="tank2" checked id="tank2-checkbox" value="<%= post.tank2 %> "><br>
                     </label
                 </div>
             </div>
