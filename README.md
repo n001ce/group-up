@@ -28,7 +28,13 @@ Group-UP fixes this problem by offering users the ability to create their own LF
     *   The stat search bar will allow you to type in a gamertag (case sensitive) and platform to view that players information.
     *   When you join a group, the group will show up on your page for others to see, along with the players currently joined.
     *   The LFG post leader has the only ability to edit, create, update, and delete the post. You can remove yourself from the team by selecting "leave group" button on the LFG show page.
-  
+
+## Preview:
+
+![profiles](/public/images/readme/allprofiles.PNG)
+![lfg](/public/images/readme/lfg.png)
+![lfgpage](/public/images/readme/lfgpage.png)
+![mainprofile](/public/images/readme/mainprofile.png)
 
 ## ERD: 	
 ![erd](/public/images/readme/erd.png)
