@@ -112,6 +112,7 @@ footer{
 }
 
 #sidePanel{
+  height: 100vh;
   overflow-y: scroll;
 }
 

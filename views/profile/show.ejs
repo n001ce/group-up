@@ -33,6 +33,18 @@
                     Logout
                   </a>
               <% } %>
+              <% if (!profile._id.equals(userProfile._id) && !userProfile.followers.includes(profile._id)) { %>
+                <a href="/profile/<%= profile._id %>/follow" class="btn btn-primary">
+                  Follow
+                </a>
+              <% } %>
+              <%# if this is not my profile page          &&  the user being viewed is in my friends list %> 
+              <% if (!profile._id.equals(userProfile._id) && userProfile.followers.includes(profile._id)) { %>
+                <a href="/profile/<%= profile._id %>/unfollow" class="btn btn-primary">
+                  Unfollow
+                </a>
+              <% } %>
+            </div>
           </div>
         </div>
       </div>
