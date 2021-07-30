@@ -8,7 +8,7 @@ export {
 
 
 const postSchema = new Schema({
-  title: String,
+  title: {type: String, required: true},
   postId: String,
   leader: {type: Schema.Types.ObjectId, ref: "Profile"},
   queue: String,

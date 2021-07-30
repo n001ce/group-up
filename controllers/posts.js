@@ -54,6 +54,10 @@ function create(req, res){
   .then(()=>{
     res.redirect('/posts')
   })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/posts/new`)
+  })
 }
 function update(req, res) {
   req.body.eroles= !!req.body.eroles
