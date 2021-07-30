@@ -7,6 +7,8 @@ export {
 
 const statSchema = new Schema({
   gamerTag: String,
+  platform: String,
+  region: {type: String, default: "us"},
   statId: Number,
   collectedBy: [{type: Schema.Types.ObjectId, ref: "Profile"}]
 },{

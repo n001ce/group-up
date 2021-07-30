@@ -9,8 +9,7 @@ const router = Router()
 
 
 router.post('/search', isLoggedIn, statsCtrl.search)
-router.post('/:id/addToProfile', isLoggedIn, statsCtrl.addToProfile)
-router.delete('/:id/removeFromCollection', isLoggedIn, statsCtrl.removeFromProfile)
+router.post('/', isLoggedIn, statsCtrl.create)
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();

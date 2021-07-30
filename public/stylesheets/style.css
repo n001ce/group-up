@@ -110,13 +110,9 @@ footer{
   width: 100%;
   background-size: cover;
 }
-#friendsList{
-  background-color: yellow;
-  height: 50vh;
-}
+
 #sidePanel{
   overflow-y: scroll;
-  
 }
 
 #threadList{
@@ -202,7 +198,7 @@ footer{
 
 /* width */
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 10px;
 }
 
 #reply{
@@ -244,4 +240,12 @@ footer{
 
 #statBox p{
   font-size: 40px;
+}
+
+
+
+#followerBox{
+  margin-left: 75px;
+  width:200px;
+  background-color:rgb(43, 46, 48);
 }
