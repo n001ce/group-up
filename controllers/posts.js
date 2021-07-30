@@ -80,15 +80,15 @@ function edit(req, res) {
   Post.findById(req.params.id)
   .populate('team')
   .then(post => {
-    res.render('posts/edit', {
-      title: `Editing ${post.title}`,
-      post
+    if(req.user.profile._id.toString() === post.leader._id.toString()){
+      res.render('posts/edit', {
+        title: `Editing ${post.title}`,
+        post
     })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
-  })
+  }else{
+    res.redirect(`/posts/${post._id}`)
+  }
+})
 }
 
 
@@ -122,6 +122,7 @@ function show(req,res){
 
 function addToWall(req, res) {
   // Add id of the logged in user to req.body for creating a game for the first time (if it doesn't exist in the database)
+  req.body.role = req.user.profile.roleSelect
   req.body.collectedBy = req.user.profile._id
   // Look to see if the game already exists in the database
   Post.findById(req.params.id)

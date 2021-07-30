@@ -132,7 +132,9 @@ footer{
 
 .tableSec{
   color: black;
-  background-color: rgba(202, 196, 196, 0.589);
+  background-color: rgba(202, 196, 196, 0.808);
+  font-family: 'owfont';
+  font-size: 20px;
 }
 
 #lfgForm li{
@@ -183,7 +185,7 @@ footer{
 #owfont{
   font-family: "owfont";
   font-size: 50px;
-  color: #f99e1a;
+  color: #9c9c9c;
 }
 
 #profile-input{
