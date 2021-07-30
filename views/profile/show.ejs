@@ -27,6 +27,11 @@
     <div class="container py-4">
       <table class="table table-light table-striped align-middle">
         <tbody>
+            <tr>
+              <td>Google Email:</td>
+              <td><%= profile.email %></td>
+            </tr>
+          
           <tr>
             <td>Name:</td>
             <td><%= profile.name %></td>
@@ -91,7 +96,7 @@
 </div>
   <div class="container">
     <div class="row">
-      <div class="col-lg-3 col-lg-auto col-sm-3 col-sml-auto" id="sidePanel">
+      <div class="col-lg-4 col-lg-auto col-sm-4 col-sml-auto" id="sidePanel">
         <h2 class="mb-3">Following</h2>     
         <% profile.followers.forEach(follower => { %>
           <div class="list-group" >
@@ -127,26 +132,26 @@
             </div>
         <% }) %> 
       </div>
-      <div class="col-lg-6" id="threadList" >
+      <div class="col-lg-8" id="threadList" >
         <div class="container">
-          <h2 class=""><%= profile.gamerTag %>'s Posts</h2>
+          <h2 class=""><%= profile.gamerTag %>'s GROUPS</h2>
           <div class="list-group">
             <% posts.forEach(post => { %>
-              <div class="card-body list-group-item">
-                <p class="card-title fs-4 text-dark"><% post.leader %></p>
-                <p class="card-text fs-5 text-dark">
+              <div class="card-body bg-dark list-group-item">
+                <p class="card-title fs-4 text-alert"><% post.leader %></p>
+                <p class="card-text fs-5 text-light">
                   Title: <%= post.title %>
                 </p>
-                <p class="card-text fs-5 text-dark">
+                <p class="card-text fs-5 text-light">
                   Available Positions:
                 </p>
                 <ul>
-                  <li><%= post.suppor1 ? "Filled" : "Empty"  %> </li>
-                  <li><%= post.suppor2 ? "Filled" : "Empty"  %> </li>
-                  <li><%= post.dps1 ? "Filled" : "Empty"  %> </li>
-                  <li><%= post.dps2 ? "Filled" : "Empty"  %> </li>
-                  <li><%= post.tank1 ? "Filled" : "Empty"  %> </li>
-                  <li><%= post.tank2 ? "Filled" : "Empty"  %> </li>
+                  <li class="text-light text-decoration-none"><%= post.suppor1 ? "" : "SUPPORT"  %> </li>
+                  <li class="text-light text-decoration-none"><%= post.suppor2 ? "" : "SUPPORT"  %> </li>
+                  <li class="text-light"><%= post.dps1 ? "" : "DPS"  %> </li>
+                  <li class="text-light"><%= post.dps2 ? "" : "DPS"  %> </li>
+                  <li class="text-light"><%= post.tank1 ? "" : "TANK"  %> </li>
+                  <li class="text-light"><%= post.tank2 ? "" : "TANK"  %> </li>
                 </ul>
                 <a 
                   href="/posts/<%=post._id%>" 
@@ -158,9 +163,6 @@
             <% }) %>
           </div>
         </div>     
-      </div>
-      <div class="col-lg-3" id="friendsList">
-        
       </div>
     </div>
   </div>

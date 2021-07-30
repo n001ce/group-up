@@ -12,9 +12,10 @@
 }
 
 
-html, body{
+body{
   height: 100vh;
   width: 100vw;
+  overflow-y: scroll;
 }
 
 .navbar{
@@ -40,6 +41,7 @@ html, body{
   position: relative;
   width: 100%;
   background-size: cover;
+  overflow-y: scroll;
 }
 
 .landing-text{
@@ -120,6 +122,7 @@ footer{
 #threadList{
   text-align: center;
   padding: 30px 30px;
+  height: 100vh;
   overflow-y: scroll;
 }
 
@@ -221,5 +224,24 @@ footer{
   margin-top: 5px;
   background-color: red;
   border-radius: 10px;
+  color: rgb(21, 149, 235);
+}
+
+#statTracker{
+  background-color: rgba(14, 165, 252, 0.568);
+  font-family: 'owfont';
+}
+
+#statBox{
+  background-color:rgba(76, 186, 250, 0.568);
+  border: rgb(76, 186, 250) 2px solid;
+  height: 100px;
+  width: 75%;
+  justify-content: center;
+  text-align: center;
   color: white;
+}
+
+#statBox p{
+  font-size: 40px;
 }

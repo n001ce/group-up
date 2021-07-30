@@ -3,118 +3,127 @@
 
 
 <div id="home">
-  <div class="container">
-    <div class="padding">
-    <div class="row">
-      <div class="col-sm-3">
-      <div class="card" style="width: 30em;">
-        <img class="card-img-top" style="height: 20em;" src="<%=apiResult.icon%>" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><%= apiResult.name %></h5>
-          <table class=" card-text table table-hover">
-            <tbody>
-                <tr>
-                    <th>Cards</th>
-                    <td><%= apiResult.quickPlayStats.awards.cards %> </td>
-                  </tr>
-                  <tr>
-                    <th>Medals</th>
-                    <td><%= apiResult.quickPlayStats.awards.medals %> </td>
-                  </tr>
-                  <tr>
-                    <th>Bronze Medals</th>
-                    <td><%= apiResult.quickPlayStats.awards.medalsBronze %> </td>
-                  </tr>
-                  <tr>
-                    <th>Silver Medals</th>
-                    <td><%= apiResult.quickPlayStats.awards.medalsSilver %> </td>
-                  </tr>
-                  <tr>
-                    <th>Gold Medals</th>
-                    <td><%= apiResult.quickPlayStats.awards.medalsGold %> </td>
-                  </tr>
-                  <tr>
-                    <th>Games Played</th>
-                    <td><%= apiResult.quickPlayStats.games.played %> </td>
-                  </tr>
-                  <tr>
-                    <th>Games Won</th>
-                    <td><%= apiResult.quickPlayStats.games.won%> </td>
-                </tr>
-              </tbody>
-        </table>          
+  <main>
+    <div class="container padding " id="statTracker">
+      <div class="row my-row">
+        <div class="col-sm-3">
+          <div class="container" >
+            <img class="card-img-top" src="<%=apiResult.icon%>">
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="container" >
+            <h1 class="text-primary"><%= apiResult.name %></h1>
+            <h1 class="text-warning">LEVEL <%= apiResult.prestige%><%= apiResult.level%> </h1>
+          </div>
         </div>
       </div>
+      <div class="row d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <h2 class="mx-4">QuickPlay Stats</h2>
+        <div class="col-sm-3 mt-3">
+          <div class="container" id="statBox">
+            <h3>Cards</h3>
+            <p><%= apiResult.quickPlayStats.awards.cards %></p>
+          </div>
+        </div>
+        <div class="col-sm-3 mt-3">
+          <div class="container" id="statBox">
+            <h3>Medals</h3>
+            <p><%= apiResult.quickPlayStats.awards.medals %></p>
+          </div>
+        </div>
+        <div class="col-sm-3 mt-3">
+          <div class="container" id="statBox">
+            <h3>Bronze</h3>
+            <p><%=apiResult.quickPlayStats.awards.medalsBronze %></p>
+          </div>
+        </div>
+        <div class="col-sm-3 mt-3">
+          <div class="container" id="statBox">
+            <h3>Silver</h3>
+            <p><%=apiResult.quickPlayStats.awards.medalsSilver %></p>
+          </div>
+        </div>
       </div>
-      <div class="col-sml-3">
-      <div class="card" style="width: 30em;">
-        <img class="card-img-top" style="height: 20em;" src="<%=apiResult.ratingIcon%>" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><%= apiResult.name %></h5>
-          <table class=" card-text table table-hover">
-            <tbody>
-                <tr>
-                    <th>Cards</th>
-                    <td><%=apiResult.ratingIcon%>  </td>
-                  </tr>
-                  <tr>
-                    <th>Medals</th>
-                    <td><%= apiResult.quickPlayStats.awards.medals %> </td>
-                  </tr>
-                  <tr>
-                    <th>Bronze Medals</th>
-                    <td><%= apiResult.quickPlayStats.awards.medalsBronze %> </td>
-                  </tr>
-                  <tr>
-                    <th>Silver Medals</th>
-                    <td><%= apiResult.quickPlayStats.awards.medalsSilver %> </td>
-                  </tr>
-                  <tr>
-                    <th>Gold Medals</th>
-                    <td><%= apiResult.quickPlayStats.awards.medalsGold %> </td>
-                  </tr>
-                  <tr>
-                    <th>Games Played</th>
-                    <td><%= apiResult.quickPlayStats.games.played %> </td>
-                  </tr>
-                  <tr>
-                    <th>Games Won</th>
-                    <td><%= apiResult.quickPlayStats.games.won%> </td>
-                </tr>
-              </tbody>
-        </table>          
-</div>
-</div>
-</div>
-    <div class="container py-4">
-      <h4 class="display-5 fw-bold text-white pt-2 text-center">
-          <%= apiResult.level %> 
-      </h4>
-      <div class="accordion" id="accordion">
-        <div class="accordion-item bg-dark">
-          <h2 class="accordion-header" id="headingOne">
-            <button 
-              class="accordion-button bg-dark text-light" 
-              type="button" 
-              data-bs-toggle="collapse" 
-              data-bs-target="#collapseOne" 
-              aria-expanded="true" 
-              aria-controls="collapseOne"
-            >
-              Player Stats
-            </button>
-      <p class="mt-4 fs-4 text-light">rating:<img src="<%=apiResult.ratingIcon%>" alt="">
-        <%= apiResult.rating%></p>
-      <p class="mt-4 fs-4 text-light">level:<img src="<%=apiResult.levelIcon%>" alt="">
-        <%= apiResult.prestige%><%= apiResult.level%></p>
-        <img src="<%=apiResult.prestigeIcon%>" alt="">
-
-      <p class="mt-4 fs-4 text-light">endorcement: <img src="<%=apiResult.endorsementIcon%>" alt="">
-        <%= apiResult.endorsement%></p>
-      <p class="mt-4 fs-4 text-light">QuickPlay</p>
+      <div class="row d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <div class="col-sm-3 mt-3">
+          <div class="container" id="statBox">
+            <h3>Gold</h3>
+            <p><%= apiResult.quickPlayStats.awards.medalsGold %></p>
+          </div>
+        </div>
+        <div class="col-sm-3 mt-3">
+          <div class="container" id="statBox">
+            <h3>Level</h3>
+            <p><%= apiResult.prestige%><%= apiResult.level%></p>
+          </div>
+        </div>
+        <div class="col-sm-3 mt-3">
+          <div class="container" id="statBox">
+            <h3>Endorsement</h3>
+            <p><%= apiResult.endorsement%></p>
+          </div>
+        </div>
+        <div class="col-sm-3 mt-3">
+          <div class="container" id="statBox">
+            <h3>Games Played</h3>
+            <p><%= apiResult.quickPlayStats.games.played %> </p>
+          </div>
+        </div>
+        <div class="row d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <h2 class="mx-4">Comp Stats</h2>
+          <div class="col-sm-3 mt-3">
+            <div class="container" id="statBox">
+              <h3>Cards</h3>
+              <p><%= apiResult.competitiveStats.awards.cards %></p>
+            </div>
+          </div>
+          <div class="col-sm-3 mt-3">
+            <div class="container" id="statBox">
+              <h3>Medals</h3>
+              <p><%= apiResult.competitiveStats.awards.medals %></p>
+            </div>
+          </div>
+          <div class="col-sm-3 mt-3">
+            <div class="container" id="statBox">
+              <h3>Bronze</h3>
+              <p><%=apiResult.competitiveStats.awards.medalsBronze %></p>
+            </div>
+          </div>
+          <div class="col-sm-3 mt-3">
+            <div class="container" id="statBox">
+              <h3>Silver</h3>
+              <p><%=apiResult.competitiveStats.awards.medalsSilver %></p>
+            </div>
+          </div>
+        </div>
+        <div class="row d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <div class="col-sm-3 mt-3">
+            <div class="container" id="statBox">
+              <h3>Gold</h3>
+              <p><%= apiResult.competitiveStats.awards.medalsGold %></p>
+            </div>
+          </div>
+          <div class="col-sm-3 mt-3">
+            <div class="container" id="statBox">
+              <h3>Games Played</h3>
+              <p><%= apiResult.competitiveStats.games.played%></p>
+            </div>
+          </div>
+          <div class="col-sm-3 mt-3">
+            <div class="container" id="statBox">
+              <h3>Games Won</h3>
+              <p><%= apiResult.competitiveStats.games.played %></p>
+            </div>
+          </div>
+          <div class="col-sm-3 mt-3">
+            <div class="container" id="statBox">
+              <h3>Games Played</h3>
+              <p><%= apiResult.quickPlayStats.games.played %> </p>
+            </div>
+          </div>
     </div>
-    </div>
-  </section>
-</main>
+  </main>
+</div>
 
 <%- include('../partials/footer') %>
