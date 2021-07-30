@@ -4,7 +4,6 @@ import { Reply } from '../models/reply.js'
 export {
   create,
   deleteReply as delete,
-  updateReply as update
 }
 
 function create(req, res) {
@@ -26,16 +25,6 @@ function create(req, res) {
   })
 }
 
-function updateReply(req, res){
-  Reply.findByIdAndUpdate(req.params.id, req.body, {new: true})
-  .then(profile => {
-    res.redirect(`/post/${post._id}`)
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
-  })
-}
 
 
 function deleteReply(req, res){

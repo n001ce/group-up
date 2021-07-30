@@ -12,7 +12,6 @@ router.post('/', isLoggedIn, postsCtrl.create)
 router.post('/:id/addToWall', isLoggedIn, postsCtrl.addToWall)
 router.delete('/:id/removeFromWall', isLoggedIn, postsCtrl.removeFromWall)
 router.delete('/:id', isLoggedIn, postsCtrl.delete)
-router.post('/search', isLoggedIn, postsCtrl.search)
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();

@@ -36,7 +36,7 @@ const postSchema = new Schema({
   replies: [{type: Schema.Types.ObjectId, ref: "Reply"}],
   team:{
     type: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
-    validate: [arrayLimit, '{PATH} exceeds the limit of 6'],
+    validate: [arrayLimit, 'Team exceeds the limit of 6'],
   },
   collectedBy: [{type: Schema.Types.ObjectId, ref: "Profile"}],
 },{

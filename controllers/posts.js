@@ -8,7 +8,6 @@ export {
   create,
   newPost as new,
   deletePost as delete,
-  search,
   show,
   addToWall,
   removeFromWall,
@@ -103,10 +102,6 @@ function deletePost(req, res){
     })
 }
 
-
-function search(req, res){
-  
-}
 
 function show(req,res){
   Post.findById(req.params.id)
