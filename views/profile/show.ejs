@@ -11,11 +11,11 @@
             <img class="image-rounded" src="<%=profile.avatar%>">
           </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-3" id="profileHeader">
           <div class="container py-5 px-3">
             <h1 class="text-primary"><%= profile.name %></h1>
             <h1 class="text-warning"><%= profile.gamerTag%></h1>
-            <h2 class="text-warning"><%= profile.roleSelect %></h1>
+            <h2 class="text-warning"><%= profile.roleSelect.toUpperCase() %></h1>
               <% if (user.profile._id.toString() === profile._id.toString()) { %>
                 <%# This is where we'll add the UI to edit a profile %> 
                   <a 

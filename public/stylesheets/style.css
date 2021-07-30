@@ -252,3 +252,12 @@ footer{
   width:200px;
   background-color:rgb(43, 46, 48);
 }
+
+#profileHeader{
+  background-color: rgba(59, 59, 59, 0.342);
+  color: rgb(206, 206, 206);
+  height: 220px;
+  font-family:"owfont";
+  border-radius: 10px;
+  width: 250px;
+}
