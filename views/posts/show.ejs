@@ -120,20 +120,20 @@
                   >
                 </div>
                 <div class="col-9" id="reply">
-                  <div class="card-body" id="replybody">
-                    <h3 class="card-title text-dark" id="replyheader">
+                  <div class="card-body " id="replybody">
+                    <h3 class="card-title text-light">
                       <a 
-                        class="text-dark text-decoration-none" 
+                        class="text-primary text-decoration-none" 
                         href="/profile/<%= reply.author._id %>"
                       >
                         <%= reply.author.name %>
                       </a>
                     </h3>
-                    <ul class="card-text text-dark" id="replylist">
-                      <li class="card-text text-dark"><%= reply.author.gamerTag %></li>
-                      <li class="card-text text-dark"><%= reply.author.platform %></li>
+                    <ul class="card-text text-secondary" id="replylist">
+                      <li class="card-text"><h6><%= reply.author.gamerTag %></h6></li>
+                      <li class="card-text"><h6><%= reply.author.platform %></h6></li>
                     </ul>
-                    <div class="card-text text-dark" id="replycontent"><%= reply.content %></div>
+                    <div class="card-text text-light" id="replycontent"><h2><%= reply.content %></h2></div>
                   </div>
                   <% if (user.profile._id.toString() === reply.author._id.toString()) { %>
                   <form action="/replies/<%= reply._id %>?_method=DELETE" method="POST">

@@ -90,3 +90,7 @@ Group-UP fixes this problem by offering users the ability to create their own LF
 ## References
 
 [images](https://overwatch.fandom.com/wiki/Overwatch_Wiki)
+
+## SHOUT OUTS
+
+Cameron Weston for brainstorming

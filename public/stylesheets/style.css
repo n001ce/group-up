@@ -1,5 +1,3 @@
-
-
 @font-face {
     font-family: 'owfont';
     src: url('/images/pages/big_noodle_titling_oblique.ttf');
@@ -199,22 +197,22 @@ footer{
   background: transparent;
 }
 
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
 #reply{
   display: flex;
   flex-wrap: wrap;
   background-color: #50555a44;
   padding-bottom: 10px;
   
+} 
+#reply li {
+  list-style: none;
 }
 
 #replybody{
   list-style: none;
   background-color: #aaaaaa;
+  color: white;
+  font-size: 14px;
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 10px;
@@ -229,7 +227,7 @@ footer{
 }
 
 #statTracker{
-  background-color: rgba(14, 165, 252, 0.568);
+  background-color: rgba(14, 115, 173, 0.568);
   font-family: 'owfont';
 }
 
