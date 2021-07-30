@@ -57,15 +57,15 @@ function update(req, res) {
 function edit(req, res) {
   Profile.findById(req.params.id)
   .then(profile => {
+    if(req.user.profile._id.toString() === profile._id.toString()){
     res.render('profile/edit', {
       title: `Editing ${profile.name}'s profile`,
       profile
     })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
-  })
+  }else{
+    res.redirect(`/profile/${profile._id}`)
+  }
+})
 }
 
 function show(req, res) {
