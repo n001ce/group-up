@@ -1,5 +1,6 @@
 import { Router } from 'express'
-import * as profilesCtrl from "../controllers/profiles.js"
+import * as profilesCtrl from '../controllers/profiles.js'
+import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 
 export {
   router
@@ -7,14 +8,9 @@ export {
 
 const router = Router()
 
-router.get('/', isLoggedIn, profilesCtrl.index)
-router.get('/:id', isLoggedIn, profilesCtrl.show)
-router.put('/:id', isLoggedIn, profilesCtrl.update)
-router.get('/:id/edit', isLoggedIn, profilesCtrl.edit)
-router.get('/:id/follow', isLoggedIn, profilesCtrl.follow)
-router.get('/:id/unfollow', isLoggedIn, profilesCtrl.unfollow)
-
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) return next();
-  res.redirect("/auth/google");
-}
+router.use(decodeUserFromToken)
+router.get('/userProfile', checkAuth, profilesCtrl.userProfile)
+router.get('/', checkAuth, profilesCtrl.index)
+router.patch('/friend/:id', checkAuth, profilesCtrl.friend)
+router.patch('/unfriend/:id', checkAuth, profilesCtrl.unfriend)
+router.put('/update/:id', checkAuth, profilesCtrl.update)

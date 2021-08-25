@@ -12,32 +12,16 @@ const postSchema = new Schema({
   postId: String,
   leader: {type: Schema.Types.ObjectId, ref: "Profile"},
   queue: String,
-  eroles: {
-    type: Boolean,
-  },
-  support1:{
-    type:Boolean,
-    },
-  support2:{
-    type: Boolean,
-    },
-  dps1:{
-    type: Boolean,
-    },
-  dps2:{
-    type: Boolean,
-    },
-  tank1:{
-    type: Boolean,
-    },
-  tank2:{
-    type: Boolean,
-  },
+  eroles: [{
+    support1: Boolean,
+    support2: Boolean,
+    dps1: Boolean,
+    dps2: Boolean,
+    tank1: Boolean,
+    tank2: Boolean,
+  }],
   replies: [{type: Schema.Types.ObjectId, ref: "Reply"}],
-  team:{
-    type: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
-    validate: [arrayLimit, 'Team exceeds the limit of 6'],
-  },
+  team:{type: Schema.Types.ObjectId, ref: "Team"},
   collectedBy: [{type: Schema.Types.ObjectId, ref: "Profile"}],
 },{
   timestamps: true,

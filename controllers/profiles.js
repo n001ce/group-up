@@ -1,108 +1,69 @@
 import { Profile } from "../models/profile.js"
-import { Post } from "../models/post.js"
-import axios from 'axios'
-import { Stat } from "../models/stat.js"
-
 
 export {
+  userProfile,
   index,
-  show,
-  edit,
-  update,
-  follow,
-  unfollow
-}
-
-function follow(req, res) {
-  Profile.findById(req.user.profile)
-  .then(profile => {
-    profile.followers.push(req.params.id)
-    profile.save()
-    .then(()=> {
-      res.redirect(`/profile/${req.params.id}`)
-    })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
-  })
-}
-
-function unfollow(req, res) {
-  Profile.findById(req.user.profile)
-  .then(profile => {
-    profile.followers.remove({_id: req.params.id})
-    profile.save()
-    .then(()=> {
-      res.redirect(`/profile/${req.params.id}`)
-    })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/posts')
-  })
+  friend,
+  unfriend,
+  update
 }
 
 function update(req, res) {
-  Profile.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  // Find the user's profile
+  console.log(req.body)
+  Profile.findByIdAndUpdate(req.params.id,req.body,{new: true})
   .then(profile => {
-    res.redirect(`/profile/${profile._id}`)
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
+    profile.save()
+    profile.populate('media').populate('friends').execPopulate()
+    .then(()=> {
+      res.json(profile)
+    })
   })
 }
 
-function edit(req, res) {
-  Profile.findById(req.params.id)
+function friend(req, res) {
+  // Find the user's profile
+  Profile.findById(req.user.profile)
   .then(profile => {
-    if(req.user.profile._id.toString() === profile._id.toString()){
-    res.render('profile/edit', {
-      title: `Editing ${profile.name}'s profile`,
-      profile
+    // push the friend's _id into the user's friends array
+    profile.friends.push(req.params.id)
+    // save the document
+    profile.save()
+    // populate the subdocs
+    profile.populate('media').populate('friends').execPopulate()
+    .then(()=> {
+      res.json(profile)
     })
-  }else{
-    res.redirect(`/profile/${profile._id}`)
-  }
-})
+  })
 }
 
-function show(req, res) {
-  Profile.findOne({ _id: req.params.id})
-  // Populate friends to get profile data for each of them
-  .populate('followers')
+function unfriend(req, res) {
+  Profile.findById(req.user.profile)
+  .populate('media')
+  .populate('friends')
   .then(profile => {
-    // Use the profile clicked to find games belonging to that user
-    Post.find({ collectedBy: profile._id })
-    .then(posts => {
-      // Find the profile of the current logged in user
-      Profile.findById(req.user.profile)
-      .then(userProfile => {
-        res.render('profile/show', {
-          // Profile of the user clicked
-          profile,
-          // Profile of the logged in user
-          userProfile,
-          title: `${profile.name}'s profile`,
-          posts,
-      })
-      })
+    profile.friends.remove({ _id: req.params.id })
+    profile.save()
+    .then(()=> {
+      res.json(profile)
     })
-
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
   })
 }
 
 function index(req, res) {
   Profile.find({})
+  .populate('media')
+  .populate('friends')
   .then(profiles => {
-    res.render('profile/index', {
-      title: "LFG Profile",
-      profiles,
-    })
+    res.json(profiles)
+  })
+}
+
+function userProfile(req, res) {
+  Profile.findById(req.user.profile)
+  .populate('media')
+  .populate('friends')
+  .then(profile => {
+    res.json(profile)
   })
 }

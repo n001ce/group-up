@@ -1,96 +1,70 @@
-# GROUP - UP
+# Getting Started with Create React App
 
-## View the Website:
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Available Scripts
 
-click [here](https://ow-group-up.herokuapp.com/)
+In the project directory, you can run:
 
-### API
-Open OW [api](https://ow-api.com/)
+### `npm start`
 
-## Motivation:
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-Overwatch is a 6 person (soon to be 5) fps strategy game revolved around teamwork, team compositions, and strategy. One of the biggest issues players face in this highly competitive game is the toxicity from random teammates. Currently, you can use the LFG system in the game to find a group to play with. The problem with this is, sometimes when you go to find a group there are none available at the time you are playing. 
+### `npm test`
 
-Group-UP fixes this problem by offering users the ability to create their own LFG post and find teammates for when they want to start playing the game. 
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `npm run build`
 
-## Guidelines:
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-    *   In order to access the website, you need to register with a google account.
-    *   Once you are registered you will be taken to the LFG post page where you can view open groups, join the groups, and add comments to the posts.
-    *   The navbar allows you to move inbetween the LFG page, View all Profiles page, and a stat search bar.
-    *   The stat search bar, which utilizes the OW api, will allow you to type in a gamertag (case sensitive) and platform to view that players information.
-    *   When you join a group, the group will show up on your page for others to see, along with the players currently joined.
-    *   The LFG post leader has the only ability to edit, create, update, and delete the post. You can remove yourself from the team by selecting "leave group" button on the LFG show page.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-## Preview:
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-![profiles](/public/images/readme/allprofiles.PNG)
-![lfg](/public/images/readme/lfg.png)
-![lfgpage](/public/images/readme/lfgpage.png)
-![mainprofile](/public/images/readme/mainprofile.PNG)
+### `npm run eject`
 
-## ERD: 	
-![erd](/public/images/readme/erd.png)
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-## Initial Wireframe:
-![wireframe1](/public/images/readme/wireframe1.png)
-![wireframe2](/public/images/readme/wireframe2.png)
-![wireframe3](/public/images/readme/wireframe3.png)
-![wireframe4](/public/images/readme/wireframe4.png)
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Trello Board: 
-[Trello](https://trello.com/b/iWO0Idp6/overwatch-lfg)
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-## Technology Used
-* OAuth with Passport
-* OW API
-* Node.js and Express
-* Mongoose and MongoDB
-* EJS
-* JavaScript
-* Bootstrap
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Minimum Viable Product:
-* AAU I should be able to sign in with my Google account.
+## Learn More
 
-* AAU I should be able directed to the LFG page when signed in.
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-* AAU I should be able to create, edit, update, and delete a LFG Post
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-* AAU I should be able to join/leave a LFG and have the LFG show up on my home page
+### Code Splitting
 
-* AAU I should be able to leave a reply on the LFG page
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-* AAU I should be able to delete my reply on the LFG Page
+### Analyzing the Bundle Size
 
-* AAU I should be able to follow/unfollow other users
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-* AAU I should be able to see all followers on my home page
+### Making a Progressive Web App
 
-* AAU I should be able to search for player stats with the Stat Search Bar
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-* AAU I should be able not be able to delete others replies or LFG posts
+### Advanced Configuration
 
-## Stretch Goals:
-* AAU I want to be able to sign in with my battle.net account
-  
-* AAU I want to be able to display my accounts stats on my home page.
-  
-* AAU I want to be able to be able to leave a review on another players page.
-  
-* AAU I want to be able create a new direct message group with my Team.
-  
-* AAU I want to be notified when my LFG is filled.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-* AAU I want the LFG to be updated when a user joins my group with what role they selected.
+### Deployment
 
-## References
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-[images](https://overwatch.fandom.com/wiki/Overwatch_Wiki)
+### `npm run build` fails to minify
 
-## SHOUT OUTS
-
-Cameron Weston for brainstorming
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

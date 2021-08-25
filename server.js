@@ -1,91 +1,45 @@
-import 'dotenv/config.js'
+
+import { router as profilesRouter } from './routes/profiles.js'
+import { router as authRouter } from './routes/auth.js'
+import { router as teamsRouter } from './routes/teams.js'
+import { router as repliesRouter } from './routes/replies.js'
+import { router as postsRouter } from './routes/posts.js'
 import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import createError from 'http-errors'
-import session from 'express-session'
 import logger from 'morgan'
-import methodOverride from 'method-override'
-import passport from 'passport'
 import cors from 'cors'
-import { passUserToView } from './middleware/middleware.js'
 
-// create the express app
-const app = express()
 
-// connect to MongoDB with mongoose
+import 'dotenv/config.js'
+
 import('./config/database.js')
 
-// load passport
-import('./config/passport.js')
+const app = express()
 
-// require routes
-import { router as indexRouter } from './routes/index.js'
-import { router as authRouter } from './routes/auth.js'
-import { router as postRouter } from './routes/posts.js'
-import { router as profileRouter } from './routes/profiles.js'
-import { router as statRouter } from './routes/stats.js'
-import { router as replyRouter } from './routes/replies.js'
-// view engine setup
-app.set(
-  'views',
-  path.join(path.dirname(fileURLToPath(import.meta.url)), 'views')
-)
-app.set('view engine', 'ejs')
 
-// middleware
+app.use(express.static(path.join(path.dirname(fileURLToPath(import.meta.url)),'build')))
 app.use(cors())
-app.use(methodOverride('_method'))
 app.use(logger('dev'))
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-app.use(
-  express.static(
-    path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
+
+app.use('/api/profiles', profilesRouter);
+app.use('/api/auth', authRouter)
+app.use('/api/teams', teamsRouter)
+app.use('/api/replies', repliesRouter)
+app.use('/api/posts', postsRouter)
+
+
+
+
+app.get("/*", function (req, res) {
+  res.sendFile(
+    path.join(path.dirname(fileURLToPath(import.meta.url)), "build", "index.html")
   )
-)
-
-// session middleware
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      sameSite: 'lax',
-    }
-  })
-)
-app.use(session({ secret: 'process.env.BNET_SECRET',
-                  saveUninitialized: true,
-                  resave: true }));
-
-// passport middleware
-app.use(passport.initialize())
-app.use(passport.session())
-
-app.use(passUserToView)
-
-// router middleware
-app.use('/', indexRouter)
-app.use('/auth', authRouter)
-app.use('/posts', postRouter)
-app.use('/profile', profileRouter)
-app.use('/stats', statRouter)
-app.use('/replies', replyRouter)
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404))
 })
 
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message
-  res.locals.error = req.app.get('env') === 'development' ? err : {}
+const port = process.env.PORT || 3001
 
-  // render the error page
-  res.status(err.status || 500)
-  res.render('error')
+app.listen(port, () => {
+  console.log(`Express is listening on port ${port}.`)
 })
-
-export { app }

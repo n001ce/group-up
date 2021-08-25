@@ -1,5 +1,6 @@
 import { Router } from 'express'
-import * as replyCtrl from "../controllers/replies.js"
+import * as replyCtrl from '../controllers/replies.js'
+import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 
 export {
   router
@@ -7,10 +8,9 @@ export {
 
 const router = Router()
 
-router.post('/:id', isLoggedIn, replyCtrl.create)
-router.delete('/:id', isLoggedIn, replyCtrl.delete)
 
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) return next();
-  res.redirect("/auth/google")
-}
+router.use(decodeUserFromToken)
+
+router.post('/:id', checkAuth, replyCtrl.create)
+router.delete('/:id', checkAuth, replyCtrl.delete)
+

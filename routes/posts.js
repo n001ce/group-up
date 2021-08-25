@@ -1,24 +1,21 @@
 import { Router } from 'express'
-const router = Router()
 import * as postsCtrl from '../controllers/posts.js'
-
-/* GET users listing. */
-router.get('/', isLoggedIn, postsCtrl.index)
-router.get('/new', isLoggedIn, postsCtrl.new)
-router.get('/:id', isLoggedIn, postsCtrl.show)
-router.get('/:id/edit', isLoggedIn, postsCtrl.edit)
-router.put('/:id', isLoggedIn, postsCtrl.update)
-router.post('/', isLoggedIn, postsCtrl.create)
-router.post('/:id/addToWall', isLoggedIn, postsCtrl.addToWall)
-router.delete('/:id/removeFromWall', isLoggedIn, postsCtrl.removeFromWall)
-router.delete('/:id', isLoggedIn, postsCtrl.delete)
-
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) return next();
-  res.redirect("/auth/google");
-}
-
+import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 
 export {
   router
 }
+
+const router = Router()
+
+
+router.use(decodeUserFromToken)
+router.get('/', checkAuth, postsCtrl.index)
+router.get('/:id', checkAuth, postsCtrl.show)
+router.get('/:id/edit', checkAuth, postsCtrl.edit)
+router.put('/:id', checkAuth, postsCtrl.update)
+router.post('/', checkAuth, postsCtrl.create)
+router.post('/:id/addToWall', checkAuth, postsCtrl.addToWall)
+router.delete('/:id/removeFromWall', checkAuth, postsCtrl.removeFromWall)
+router.delete('/:id', checkAuth, postsCtrl.delete)
+

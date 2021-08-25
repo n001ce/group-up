@@ -13,8 +13,9 @@ const profileSchema = mongoose.Schema({
   platform:{type: String, default: "xbl"},
   region: String,
   roleSelect: {type: String, default: "Support"},
+  team: {type: Schema.Types.ObjectId, ref: "Team"},
   reviews: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
-  followers: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
+  friends: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
   
  }, {
   timestamps: true

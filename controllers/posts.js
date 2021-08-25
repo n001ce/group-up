@@ -1,4 +1,3 @@
-import { Passport } from 'passport'
 import { Post } from '../models/post.js'
 import { Reply } from '../models/reply.js'
 
@@ -6,7 +5,6 @@ import { Reply } from '../models/reply.js'
 export {
   index,
   create,
-  newPost as new,
   deletePost as delete,
   show,
   addToWall,
@@ -23,41 +21,23 @@ function index(req, res){
   .populate('team')
   .populate('replies')
   .sort({createdAt: "desc"})
-  .then(posts=>{
-    res.render('posts/index',{
-      title: "LFG",
-      posts
+  .then(post=>{
+    res.json(post)
     })
-  })
-
-}
-
-function newPost(req, res){
-  res.render('posts/new',{
-    title: "New Post"
-  });
-}
+  }
 
 function create(req, res){
-  req.body.postId = req.params.id
-  req.body.leader = req.user.profile._id
-  req.body.eroles= !!req.body.eroles
-  req.body.support1 = !!req.body.support1
-  req.body.support2= !!req.body.support2
-  req.body.dps1= !!req.body.dps1
-  req.body.dps2= !!req.body.dps2
-  req.body.tank1= !!req.body.tank1
-  req.body.tank2= !!req.body.tank2
-
   Post.create(req.body)
-  .then(()=>{
-    res.redirect('/posts')
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect(`/posts/new`)
+  .then(post => {
+    post.populate('author').populate('LFG').execPopulate()
+    .then(()=> {
+      res.json(post)
+    })
   })
 }
+
+
+
 function update(req, res) {
   req.body.eroles= !!req.body.eroles
   req.body.support1 = !!req.body.support1
@@ -68,25 +48,22 @@ function update(req, res) {
   req.body.tank2= !!req.body.tank2
   Post.findByIdAndUpdate(req.params.id, req.body, {new: true})
   .then(post => {
-    res.redirect(`/posts/${post._id}`)
+    res.json(post)
   })
   .catch(err => {
     console.log(err)
-    res.redirect(`/posts`)
+    res.redirect(`back`)
   })
 }
 
 function edit(req, res) {
-  Post.findById(req.params.id)
-  .populate('team')
+  Post.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  .populate('team').populate('replies').execPopulate()
   .then(post => {
     if(req.user.profile._id.toString() === post.leader._id.toString()){
-      res.render('posts/edit', {
-        title: `Editing ${post.title}`,
-        post
-    })
-  }else{
-    res.redirect(`/posts/${post._id}`)
+      res.json(post)
+    } else{
+    res.redirect('back')
   }
 })
 }
@@ -113,58 +90,60 @@ function show(req,res){
     }
   })
   .then(post=>{
-    res.render('posts/show',{
-      title: 'LFG Details',
-      post
+    res.json(post)
+    })
+}
+
+function addToWall(req, res) {
+  req.body.collectedBy = req.user.profile
+  Profile.findById(req.user.profile)
+  .then(profile => {
+    Post.findOne({id: req.body.id})
+    .then(post =>  {
+      if (post) {
+        post.collectedBy.push(req.user.profile)
+        post.save()
+        .then(post => {
+          profile.post.push(post._id)
+          profile.save()
+          profile.populate('post').populate('friends').execPopulate()
+          .then((profile) => {
+            res.json(profile)
+          })
+        })
+      } else {
+        Post.create(req.body)
+        .then(post => {
+          profile.post.push(post._id)
+          profile.save()
+          profile.populate('post').populate('friends').execPopulate()
+          .then((profile) => {
+            res.json(profile)
+          })
+        })
+      }
     })
   })
 }
 
-function addToWall(req, res) {
-  // Add id of the logged in user to req.body for creating a game for the first time (if it doesn't exist in the database)
-  req.body.role = req.user.profile.roleSelect
-  req.body.collectedBy = req.user.profile._id
-  // Look to see if the game already exists in the database
-  Post.findById(req.params.id)
-  .then(post => {
-    // If it does, push the user's profile id to game.collectedBy
-    if (post) {
-      post.collectedBy.push(req.user.profile._id)
-      post.team.push(req.user.profile._id)
-      post.save()
-      .then(() => {
-        res.redirect(`/posts/${req.params.id}`)
-      })
-    } else {
-      // If it doesn't exist in the database, create it!
-      Post.create(req.body)
-      .then(() => {
-        res.redirect(`/posts/${req.params.id}`)
-      })
-    }
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
-  })
-}
 
 
 function removeFromWall(req, res) {
   // Find the game in the database
-  Post.findById(req.params.id)
+  Post.findOne({ id: req.params.id })
   .then(post => {
-    // Remove the user's profile id from collectedBy
-    post.replies.remove(req.user.profile._id)
-    post.team.remove(req.user.profile._id)
-    post.collectedBy.remove(req.user.profile._id)
+    post.collectedBy.remove({ _id: req.user.profile })
     post.save()
     .then(() => {
-      res.redirect(`/posts/${req.params.id}`)
+      Profile.findById(req.user.profile)
+      .then(profile => {
+        let postIdx = profile.post.indexOf(post._id)
+        profile.media.splice(psotIdx, 1)
+        profile.save()
+        profile.populate('post').populate('friends').execPopulate()
+        .then(()=> res.json(profile))
+      })
     })
   })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
-  })
 }
+
